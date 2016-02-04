@@ -10,6 +10,7 @@
 		C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099BFD1C61C5EE00E7A630 /* BaseTableViewController.swift */; };
 		C9099C011C61C70400E7A630 /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9099C001C61C70400E7A630 /* VisitorView.xib */; };
 		C9099C031C61C72F00E7A630 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C021C61C72F00E7A630 /* VisitorView.swift */; };
+		C9099C051C62DF4C00E7A630 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C041C62DF4C00E7A630 /* TitleButton.swift */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
 		C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1721C60D1510006D44B /* Main.storyboard */; };
 		C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1751C60D1510006D44B /* Assets.xcassets */; };
@@ -48,6 +49,7 @@
 		C9099BFD1C61C5EE00E7A630 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		C9099C001C61C70400E7A630 /* VisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
 		C9099C021C61C72F00E7A630 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
+		C9099C041C62DF4C00E7A630 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B3E16E1C60D1510006D44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B3E1731C60D1510006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				C9099C001C61C70400E7A630 /* VisitorView.xib */,
 				C9099C021C61C72F00E7A630 /* VisitorView.swift */,
+				C9099C041C62DF4C00E7A630 /* TitleButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
 				C9B3E1A41C60E1B10006D44B /* MainTabBarController.swift in Sources */,
 				C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */,
+				C9099C051C62DF4C00E7A630 /* TitleButton.swift in Sources */,
 				C9B3E1AA1C60EF9B0006D44B /* MessageTableViewController.swift in Sources */,
 				C9B3E1A61C60EF720006D44B /* DiscoverTableViewController.swift in Sources */,
 				C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */,

@@ -10,6 +10,17 @@ import UIKit
 
 class HomeTableViewController: BaseTableViewController {
 
+    @IBAction func leftBarItemClick(sender: UIButton) {
+        print(__FUNCTION__)
+    }
+    
+    @IBAction func rightBarItemClick(sender: UIButton) {
+        print(__FUNCTION__)
+
+    }
+    @IBAction func titleBtnClick(sender: TitleButton) {
+        sender.selected = !sender.selected
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if !isLogin {
