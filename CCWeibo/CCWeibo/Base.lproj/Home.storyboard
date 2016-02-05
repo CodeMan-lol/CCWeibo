@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10102" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="EnV-Xq-Ij5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10080"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home Table View Controller-->
@@ -66,16 +67,17 @@
                     </navigationItem>
                     <connections>
                         <segue destination="zjV-ge-T2z" kind="presentation" identifier="PopoverTitleTable" customClass="PopoverSegue" customModule="CCWeibo" customModuleProvider="target" id="fsh-2R-hyI"/>
+                        <segue destination="FQA-21-LEn" kind="presentation" identifier="ShowQRCodeScanView" id="2Fq-dI-Fjj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91w-bk-PyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="-665"/>
         </scene>
-        <!--View Controller-->
+        <!--扫码-->
         <scene sceneID="gGL-Tz-Z8L">
             <objects>
-                <viewController id="Dcu-0d-Fyx" sceneMemberID="viewController">
+                <viewController id="Dcu-0d-Fyx" customClass="QRCodeViewController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Do8-0E-Psk"/>
                         <viewControllerLayoutGuide type="bottom" id="yTQ-nJ-ZEt"/>
@@ -83,12 +85,126 @@
                     <view key="view" contentMode="scaleToFill" id="8ez-C1-dA2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tabBar clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kcv-z7-N2r">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <tabBarItem title="二维码" image="qrcode_tabbar_icon_qrcode" selectedImage="qrcode_tabbar_icon_qrcode_highlighted" id="s9H-8E-yNR"/>
+                                    <tabBarItem title="条形码" image="qrcode_tabbar_icon_barcode" selectedImage="qrcode_tabbar_icon_barcode_highlighted" id="ldP-gY-sgb"/>
+                                </items>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </tabBar>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eID-GL-3hH">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_border" translatesAutoresizingMaskIntoConstraints="NO" id="ey8-Mo-9e4">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_scanline_qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="Il4-dN-OO7">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Il4-dN-OO7" firstAttribute="leading" secondItem="eID-GL-3hH" secondAttribute="leading" id="1F0-bD-yHP"/>
+                                    <constraint firstItem="Il4-dN-OO7" firstAttribute="top" secondItem="eID-GL-3hH" secondAttribute="top" id="6tL-ce-c3D"/>
+                                    <constraint firstItem="ey8-Mo-9e4" firstAttribute="centerX" secondItem="eID-GL-3hH" secondAttribute="centerX" id="Pu7-nQ-6Kk"/>
+                                    <constraint firstItem="Il4-dN-OO7" firstAttribute="height" secondItem="eID-GL-3hH" secondAttribute="height" id="Q7l-cT-ZmH"/>
+                                    <constraint firstItem="ey8-Mo-9e4" firstAttribute="centerY" secondItem="eID-GL-3hH" secondAttribute="centerY" id="h5t-w9-G0h"/>
+                                    <constraint firstAttribute="height" constant="300" id="hb6-g1-hvG"/>
+                                    <constraint firstItem="ey8-Mo-9e4" firstAttribute="height" secondItem="eID-GL-3hH" secondAttribute="height" id="hrM-DP-JZD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Il4-dN-OO7" secondAttribute="trailing" id="iwE-CT-v3F"/>
+                                    <constraint firstItem="ey8-Mo-9e4" firstAttribute="width" secondItem="eID-GL-3hH" secondAttribute="width" id="taN-U4-69d"/>
+                                    <constraint firstAttribute="width" constant="300" id="xH8-R9-18n"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="对准二维码进行扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMv-a2-e1m">
+                                <rect key="frame" x="150" y="112" width="300" height="18"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.18982712765957446" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-2Q-TOe">
+                                <rect key="frame" x="264" y="470" width="72" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="72" id="S96-EB-BdD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="我的名片" backgroundImage="qrcode_button_background"/>
+                                <connections>
+                                    <segue destination="Hvz-N4-mdW" kind="show" id="7Jp-pD-26g"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eID-GL-3hH" firstAttribute="centerX" secondItem="8ez-C1-dA2" secondAttribute="centerX" id="2oJ-Kz-qWL"/>
+                            <constraint firstItem="TOA-2Q-TOe" firstAttribute="centerX" secondItem="8ez-C1-dA2" secondAttribute="centerX" id="9bI-vB-ZSH"/>
+                            <constraint firstItem="TOA-2Q-TOe" firstAttribute="top" secondItem="eID-GL-3hH" secondAttribute="bottom" constant="20" id="FIP-Lb-rBT"/>
+                            <constraint firstItem="sMv-a2-e1m" firstAttribute="width" secondItem="Il4-dN-OO7" secondAttribute="width" id="GR2-bE-5rY"/>
+                            <constraint firstItem="kcv-z7-N2r" firstAttribute="leading" secondItem="8ez-C1-dA2" secondAttribute="leadingMargin" constant="-20" id="f4O-dC-TGt"/>
+                            <constraint firstItem="eID-GL-3hH" firstAttribute="top" secondItem="sMv-a2-e1m" secondAttribute="bottom" constant="20" id="fMI-1g-lDA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kcv-z7-N2r" secondAttribute="trailing" constant="-20" id="kSi-Jr-xDr"/>
+                            <constraint firstItem="eID-GL-3hH" firstAttribute="centerY" secondItem="8ez-C1-dA2" secondAttribute="centerY" id="pnb-m3-h2e"/>
+                            <constraint firstItem="yTQ-nJ-ZEt" firstAttribute="top" secondItem="kcv-z7-N2r" secondAttribute="bottom" id="sRd-5Q-zik"/>
+                            <constraint firstItem="sMv-a2-e1m" firstAttribute="centerX" secondItem="8ez-C1-dA2" secondAttribute="centerX" id="tlc-Np-NJZ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="扫码" id="UHH-5d-red">
+                        <barButtonItem key="leftBarButtonItem" title="关闭" id="rBB-0Z-rnx">
+                            <connections>
+                                <action selector="close:" destination="Dcu-0d-Fyx" id="4Zz-aJ-NL7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="相册" id="vB6-sd-YXh"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="containerHeightCons" destination="hb6-g1-hvG" id="5Qk-sf-uEg"/>
+                        <outlet property="resultLabel" destination="sMv-a2-e1m" id="wTL-nJ-Mef"/>
+                        <outlet property="scanLineTopCons" destination="6tL-ce-c3D" id="wq6-eg-aUh"/>
+                        <outlet property="scanLineView" destination="Il4-dN-OO7" id="CYQ-iG-vXq"/>
+                        <outlet property="tabBar" destination="kcv-z7-N2r" id="biL-hE-pLy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IbE-ma-WE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1313" y="-1383"/>
+            <point key="canvasLocation" x="2007" y="-1383"/>
+        </scene>
+        <!--Code Card View Controller-->
+        <scene sceneID="SeF-zr-nOU">
+            <objects>
+                <viewController id="Hvz-N4-mdW" customClass="QRCodeCardViewController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3sc-do-4Ue"/>
+                        <viewControllerLayoutGuide type="bottom" id="cgc-Xc-mRa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LF4-bk-MLo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rFq-sv-5On">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="gf3-nS-xsx"/>
+                                    <constraint firstAttribute="height" constant="300" id="iSr-oy-SVL"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rFq-sv-5On" firstAttribute="centerY" secondItem="LF4-bk-MLo" secondAttribute="centerY" id="cX2-OP-MKF"/>
+                            <constraint firstItem="rFq-sv-5On" firstAttribute="centerX" secondItem="LF4-bk-MLo" secondAttribute="centerX" id="zvE-nV-ZgG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cardImageView" destination="rFq-sv-5On" id="1ka-bQ-DNo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O20-OW-ntC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2692" y="-1383"/>
         </scene>
         <!--Popover View Controller-->
         <scene sceneID="U2u-x9-e5p">
@@ -154,6 +270,28 @@
             </objects>
             <point key="canvasLocation" x="-209" y="-665"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Sl6-Gm-VOg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FQA-21-LEn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LNe-za-GXb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dcu-0d-Fyx" kind="relationship" relationship="rootViewController" id="3cU-Q6-pdT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PUK-0Q-DbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1318" y="-1383"/>
+        </scene>
     </scenes>
     <resources>
         <image name="navigationbar_arrow_down" width="13" height="7"/>
@@ -163,6 +301,13 @@
         <image name="navigationbar_pop" width="30" height="30"/>
         <image name="navigationbar_pop_highlighted" width="30" height="30"/>
         <image name="popover_background" width="217" height="49"/>
+        <image name="qrcode_border" width="51" height="51"/>
+        <image name="qrcode_button_background" width="34" height="32"/>
+        <image name="qrcode_scanline_qrcode" width="218" height="170"/>
+        <image name="qrcode_tabbar_icon_barcode" width="40" height="40"/>
+        <image name="qrcode_tabbar_icon_barcode_highlighted" width="40" height="40"/>
+        <image name="qrcode_tabbar_icon_qrcode" width="40" height="40"/>
+        <image name="qrcode_tabbar_icon_qrcode_highlighted" width="40" height="40"/>
         <image name="tabbar_home" width="30" height="30"/>
         <image name="tabbar_home_highlighted" width="30" height="30"/>
     </resources>

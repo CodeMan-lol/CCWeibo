@@ -15,7 +15,7 @@ class HomeTableViewController: BaseTableViewController {
     }
     
     @IBAction func rightBarItemClick(sender: UIButton) {
-        print(__FUNCTION__)
+        performSegueWithIdentifier("ShowQRCodeScanView", sender: nil)
 
     }
     @IBAction func titleBtnClick(sender: TitleButton) {        
