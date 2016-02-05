@@ -64,15 +64,36 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="zjV-ge-T2z" kind="presentation" identifier="PopoverTitleTable" customClass="PopoverSegue" customModule="CCWeibo" customModuleProvider="target" id="fsh-2R-hyI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="91w-bk-PyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="-665"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="gGL-Tz-Z8L">
+            <objects>
+                <viewController id="Dcu-0d-Fyx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Do8-0E-Psk"/>
+                        <viewControllerLayoutGuide type="bottom" id="yTQ-nJ-ZEt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8ez-C1-dA2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IbE-ma-WE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1313" y="-1383"/>
+        </scene>
+        <!--Popover View Controller-->
         <scene sceneID="U2u-x9-e5p">
             <objects>
-                <viewController id="zjV-ge-T2z" sceneMemberID="viewController">
+                <viewController id="zjV-ge-T2z" customClass="PopoverViewController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fwH-8z-Hpg"/>
                         <viewControllerLayoutGuide type="bottom" id="Se3-ol-PyK"/>
@@ -80,12 +101,38 @@
                     <view key="view" contentMode="scaleToFill" id="a3g-hN-DO2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popover_background" translatesAutoresizingMaskIntoConstraints="NO" id="KS5-bY-tBL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wfq-v7-BFw">
+                                <rect key="frame" x="15" y="35" width="570" height="555"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KS5-bY-tBL" firstAttribute="centerX" secondItem="a3g-hN-DO2" secondAttribute="centerX" id="EWF-rD-0OC"/>
+                            <constraint firstAttribute="trailing" secondItem="Wfq-v7-BFw" secondAttribute="trailing" constant="15" id="GFJ-QD-cc7"/>
+                            <constraint firstItem="Wfq-v7-BFw" firstAttribute="top" secondItem="fwH-8z-Hpg" secondAttribute="bottom" constant="15" id="HSF-AC-jcN"/>
+                            <constraint firstItem="Wfq-v7-BFw" firstAttribute="leading" secondItem="a3g-hN-DO2" secondAttribute="leading" constant="15" id="c36-Dr-XgI"/>
+                            <constraint firstItem="KS5-bY-tBL" firstAttribute="centerY" secondItem="a3g-hN-DO2" secondAttribute="centerY" id="c53-Js-tQX"/>
+                            <constraint firstItem="KS5-bY-tBL" firstAttribute="height" secondItem="a3g-hN-DO2" secondAttribute="height" id="eFt-0k-rvi"/>
+                            <constraint firstItem="Se3-ol-PyK" firstAttribute="top" secondItem="Wfq-v7-BFw" secondAttribute="bottom" constant="10" id="eMq-uE-zl6"/>
+                            <constraint firstItem="Wfq-v7-BFw" firstAttribute="top" secondItem="fwH-8z-Hpg" secondAttribute="bottom" constant="20" id="qNJ-l0-xa1"/>
+                            <constraint firstItem="KS5-bY-tBL" firstAttribute="width" secondItem="a3g-hN-DO2" secondAttribute="width" id="ymE-K2-G5E"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="qNJ-l0-xa1"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csp-es-5U1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1243" y="-665"/>
+            <point key="canvasLocation" x="1318" y="-665"/>
         </scene>
         <!--首页-->
         <scene sceneID="xoC-1x-Cj5">
@@ -115,6 +162,7 @@
         <image name="navigationbar_friendattention_highlighted" width="30" height="30"/>
         <image name="navigationbar_pop" width="30" height="30"/>
         <image name="navigationbar_pop_highlighted" width="30" height="30"/>
+        <image name="popover_background" width="217" height="49"/>
         <image name="tabbar_home" width="30" height="30"/>
         <image name="tabbar_home_highlighted" width="30" height="30"/>
     </resources>

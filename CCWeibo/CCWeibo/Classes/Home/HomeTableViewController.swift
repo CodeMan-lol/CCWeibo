@@ -18,24 +18,33 @@ class HomeTableViewController: BaseTableViewController {
         print(__FUNCTION__)
 
     }
-    @IBAction func titleBtnClick(sender: TitleButton) {
-        sender.selected = !sender.selected
+    @IBAction func titleBtnClick(sender: TitleButton) {        
+        performSegueWithIdentifier("PopoverTitleTable", sender: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         if !isLogin {
             (view as! VisitorView).setupViews(true, iconName: "visitordiscover_feed_image_house", info: "关注一些人，回这里看看有什么惊喜")
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
     }
-
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    func changeTitleArrow() {
+        let titleBtn = navigationItem.titleView as! TitleButton
+        titleBtn.selected = !titleBtn.selected
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - 转场相关
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segue = segue as? PopoverSegue {
+            segue.preferredPopFrame = CGRect(x: UIScreen.mainScreen().bounds.midX - 100, y: 56, width: 200, height: 300)            
+        }
     }
 
     // MARK: - Table view data source
