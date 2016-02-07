@@ -17,6 +17,9 @@
 		C9099C0A1C6363B100E7A630 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C091C6363B100E7A630 /* PopoverViewController.swift */; };
 		C9099C0C1C63652200E7A630 /* PopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0B1C63652200E7A630 /* PopoverSegue.swift */; };
 		C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */; };
+		C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */; };
+		C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0D1C67802C0043C276 /* UserInfo.swift */; };
+		C9888F101C678A440043C276 /* DelayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0F1C678A440043C276 /* DelayUtil.swift */; };
 		C98AB0D71C64408B0021387E /* HomeNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D61C64408B0021387E /* HomeNotifications.swift */; };
 		C98AB0DA1C644F760021387E /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D91C644F760021387E /* QRCodeViewController.swift */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
@@ -34,7 +37,12 @@
 		C9B3E1B11C618CB70006D44B /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1B01C618CB70006D44B /* Discover.storyboard */; };
 		C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1B21C618CDB0006D44B /* Message.storyboard */; };
 		C9B3E1B61C618CE90006D44B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1B51C618CE90006D44B /* Profile.storyboard */; };
+		C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */; };
+		C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA60211C670DD000A9F999 /* String+FilePath.swift */; };
 		C9F9C75B1C64D311001E43D1 /* QRCodeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9C75A1C64D311001E43D1 /* QRCodeCardViewController.swift */; };
+		C9F9C75E1C66169B001E43D1 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9C75D1C66169B001E43D1 /* OAuthViewController.swift */; };
+		C9F9C7601C6616BF001E43D1 /* WBKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9C75F1C6616BF001E43D1 /* WBKeys.swift */; };
+		C9F9C7621C661744001E43D1 /* OAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9F9C7611C661744001E43D1 /* OAuth.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +77,9 @@
 		C9099C091C6363B100E7A630 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		C9099C0B1C63652200E7A630 /* PopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverSegue.swift; sourceTree = "<group>"; };
 		C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
+		C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRouter.swift; sourceTree = "<group>"; };
+		C9888F0D1C67802C0043C276 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		C9888F0F1C678A440043C276 /* DelayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayUtil.swift; sourceTree = "<group>"; };
 		C98AB0D61C64408B0021387E /* HomeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNotifications.swift; sourceTree = "<group>"; };
 		C98AB0D91C644F760021387E /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +103,12 @@
 		C9B3E1B01C618CB70006D44B /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Discover.storyboard; path = ../../Discover.storyboard; sourceTree = "<group>"; };
 		C9B3E1B31C618CDB0006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Message.storyboard; sourceTree = "<group>"; };
 		C9B3E1B51C618CE90006D44B /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = ../../Profile.storyboard; sourceTree = "<group>"; };
+		C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
+		C9CA60211C670DD000A9F999 /* String+FilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FilePath.swift"; sourceTree = "<group>"; };
 		C9F9C75A1C64D311001E43D1 /* QRCodeCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeCardViewController.swift; sourceTree = "<group>"; };
+		C9F9C75D1C66169B001E43D1 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		C9F9C75F1C6616BF001E43D1 /* WBKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBKeys.swift; sourceTree = "<group>"; };
+		C9F9C7611C661744001E43D1 /* OAuth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OAuth.storyboard; sourceTree = "<group>"; };
 		E4447FF349A1136C74E8CAF5 /* Pods-CCWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CCWeibo/Pods-CCWeibo.debug.xcconfig"; sourceTree = "<group>"; };
 		E51D8DB4D7850C68FA2C3DB7 /* Pods-CCWeiboUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CCWeiboUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CCWeiboUITests/Pods-CCWeiboUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,6 +246,7 @@
 		C9B3E19C1C60DBB70006D44B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9F9C75C1C661674001E43D1 /* OAuth */,
 				C9099BFF1C61C6F100E7A630 /* Common */,
 				C9B3E19D1C60DBB70006D44B /* Discover */,
 				C9B3E19E1C60DBB70006D44B /* Home */,
@@ -290,8 +307,23 @@
 		C9B3E1A21C60DBB70006D44B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */,
+				C9CA60211C670DD000A9F999 /* String+FilePath.swift */,
+				C9888F0F1C678A440043C276 /* DelayUtil.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C9F9C75C1C661674001E43D1 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				C9F9C75F1C6616BF001E43D1 /* WBKeys.swift */,
+				C9F9C75D1C66169B001E43D1 /* OAuthViewController.swift */,
+				C9F9C7611C661744001E43D1 /* OAuth.storyboard */,
+				C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */,
+				C9888F0D1C67802C0043C276 /* UserInfo.swift */,
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		EB411DF9D58F26630C56D419 /* Pods */ = {
@@ -423,6 +455,7 @@
 				C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */,
 				C9B3E1B11C618CB70006D44B /* Discover.storyboard in Resources */,
 				C9099C011C61C70400E7A630 /* VisitorView.xib in Resources */,
+				C9F9C7621C661744001E43D1 /* OAuth.storyboard in Resources */,
 				C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */,
 				C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */,
 				C9B3E1B61C618CE90006D44B /* Profile.storyboard in Resources */,
@@ -576,11 +609,16 @@
 			files = (
 				C9099C0C1C63652200E7A630 /* PopoverSegue.swift in Sources */,
 				C9B3E1AC1C60EFB60006D44B /* ProfileTableViewController.swift in Sources */,
+				C9F9C7601C6616BF001E43D1 /* WBKeys.swift in Sources */,
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
 				C9099C0A1C6363B100E7A630 /* PopoverViewController.swift in Sources */,
+				C9888F101C678A440043C276 /* DelayUtil.swift in Sources */,
+				C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */,
+				C9F9C75E1C66169B001E43D1 /* OAuthViewController.swift in Sources */,
 				C9B3E1A41C60E1B10006D44B /* MainTabBarController.swift in Sources */,
 				C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */,
 				C9F9C75B1C64D311001E43D1 /* QRCodeCardViewController.swift in Sources */,
+				C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */,
 				C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */,
 				C9099C051C62DF4C00E7A630 /* TitleButton.swift in Sources */,
 				C98AB0D71C64408B0021387E /* HomeNotifications.swift in Sources */,
@@ -589,6 +627,8 @@
 				C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */,
 				C98AB0DA1C644F760021387E /* QRCodeViewController.swift in Sources */,
 				C9099C031C61C72F00E7A630 /* VisitorView.swift in Sources */,
+				C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */,
+				C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

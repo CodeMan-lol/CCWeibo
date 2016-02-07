@@ -96,13 +96,13 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </tabBar>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eID-GL-3hH">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_border" translatesAutoresizingMaskIntoConstraints="NO" id="ey8-Mo-9e4">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_scanline_qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="Il4-dN-OO7">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -112,27 +112,29 @@
                                     <constraint firstItem="ey8-Mo-9e4" firstAttribute="centerX" secondItem="eID-GL-3hH" secondAttribute="centerX" id="Pu7-nQ-6Kk"/>
                                     <constraint firstItem="Il4-dN-OO7" firstAttribute="height" secondItem="eID-GL-3hH" secondAttribute="height" id="Q7l-cT-ZmH"/>
                                     <constraint firstItem="ey8-Mo-9e4" firstAttribute="centerY" secondItem="eID-GL-3hH" secondAttribute="centerY" id="h5t-w9-G0h"/>
-                                    <constraint firstAttribute="height" constant="300" id="hb6-g1-hvG"/>
+                                    <constraint firstAttribute="height" constant="200" id="hb6-g1-hvG"/>
                                     <constraint firstItem="ey8-Mo-9e4" firstAttribute="height" secondItem="eID-GL-3hH" secondAttribute="height" id="hrM-DP-JZD"/>
                                     <constraint firstAttribute="trailing" secondItem="Il4-dN-OO7" secondAttribute="trailing" id="iwE-CT-v3F"/>
                                     <constraint firstItem="ey8-Mo-9e4" firstAttribute="width" secondItem="eID-GL-3hH" secondAttribute="width" id="taN-U4-69d"/>
-                                    <constraint firstAttribute="width" constant="300" id="xH8-R9-18n"/>
+                                    <constraint firstAttribute="width" constant="200" id="xH8-R9-18n"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="对准二维码进行扫描" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMv-a2-e1m">
-                                <rect key="frame" x="150" y="112" width="300" height="18"/>
+                                <rect key="frame" x="200" y="162" width="200" height="18"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.18982712765957446" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TOA-2Q-TOe">
-                                <rect key="frame" x="264" y="470" width="72" height="32"/>
+                                <rect key="frame" x="264" y="420" width="72" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="72" id="S96-EB-BdD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="我的名片" backgroundImage="qrcode_button_background"/>
+                                <state key="normal" title="我的名片" backgroundImage="qrcode_button_background">
+                                    <color key="titleColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="Hvz-N4-mdW" kind="show" id="7Jp-pD-26g"/>
                                 </connections>
@@ -185,10 +187,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rFq-sv-5On">
-                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="gf3-nS-xsx"/>
-                                    <constraint firstAttribute="height" constant="300" id="iSr-oy-SVL"/>
+                                    <constraint firstAttribute="width" constant="200" id="gf3-nS-xsx"/>
+                                    <constraint firstAttribute="height" constant="200" id="iSr-oy-SVL"/>
                                 </constraints>
                             </imageView>
                         </subviews>

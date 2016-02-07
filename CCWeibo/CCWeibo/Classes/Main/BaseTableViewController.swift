@@ -9,7 +9,10 @@
 import UIKit
 
 class BaseTableViewController: UITableViewController {
-    var isLogin: Bool = true
+    lazy var isLogin: Bool = {
+        guard let account = UserAccount.loadAccount() else { return false }
+        return true
+    }()
 
     override func loadView() {
         isLogin ? super.loadView() : loadVisitorView()
@@ -21,11 +24,18 @@ class BaseTableViewController: UITableViewController {
         visitorView.delegate = self
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "registerBtnDidClick")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "loginBtnDidClick")
+        let titleLabel = UILabel()
+        titleLabel.text = tabBarController!.tabBar.items![tabBarController!.selectedIndex].title!
+        navigationItem.titleView = titleLabel
+        titleLabel.sizeToFit()
+
     }
 }
 extension BaseTableViewController: VisitorViewDelegate {
     func loginBtnDidClick() {
-        print(__FUNCTION__)
+        let oAuthSB = UIStoryboard(name: "OAuth", bundle: nil)
+        let oAuthVC = oAuthSB.instantiateInitialViewController()
+        self.presentViewController(oAuthVC!, animated: true, completion: nil)
     }
     func registerBtnDidClick() {
         print(__FUNCTION__)
