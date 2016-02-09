@@ -20,8 +20,11 @@
 		C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */; };
 		C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0D1C67802C0043C276 /* UserInfo.swift */; };
 		C9888F101C678A440043C276 /* DelayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0F1C678A440043C276 /* DelayUtil.swift */; };
+		C9888F131C6799F50043C276 /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F121C6799F50043C276 /* NewFeatureViewController.swift */; };
 		C98AB0D71C64408B0021387E /* HomeNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D61C64408B0021387E /* HomeNotifications.swift */; };
 		C98AB0DA1C644F760021387E /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D91C644F760021387E /* QRCodeViewController.swift */; };
+		C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F4EC41C6990370024A931 /* WelcomeViewController.swift */; };
+		C98F4F011C69A8FC0024A931 /* ApplicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
 		C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1721C60D1510006D44B /* Main.storyboard */; };
 		C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1751C60D1510006D44B /* Assets.xcassets */; };
@@ -80,8 +83,11 @@
 		C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRouter.swift; sourceTree = "<group>"; };
 		C9888F0D1C67802C0043C276 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C9888F0F1C678A440043C276 /* DelayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayUtil.swift; sourceTree = "<group>"; };
+		C9888F121C6799F50043C276 /* NewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
 		C98AB0D61C64408B0021387E /* HomeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNotifications.swift; sourceTree = "<group>"; };
 		C98AB0D91C644F760021387E /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		C98F4EC41C6990370024A931 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfo.swift; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B3E16E1C60D1510006D44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B3E1731C60D1510006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -172,6 +178,15 @@
 			path = Popover;
 			sourceTree = "<group>";
 		};
+		C9888F111C67996A0043C276 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				C9888F121C6799F50043C276 /* NewFeatureViewController.swift */,
+				C98F4EC41C6990370024A931 /* WelcomeViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		C98AB0D51C6440740021387E /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +261,7 @@
 		C9B3E19C1C60DBB70006D44B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C9888F111C67996A0043C276 /* Welcome */,
 				C9F9C75C1C661674001E43D1 /* OAuth */,
 				C9099BFF1C61C6F100E7A630 /* Common */,
 				C9B3E19D1C60DBB70006D44B /* Discover */,
@@ -282,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				C9099BFD1C61C5EE00E7A630 /* BaseTableViewController.swift */,
+				C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -611,10 +628,13 @@
 				C9B3E1AC1C60EFB60006D44B /* ProfileTableViewController.swift in Sources */,
 				C9F9C7601C6616BF001E43D1 /* WBKeys.swift in Sources */,
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
+				C9888F131C6799F50043C276 /* NewFeatureViewController.swift in Sources */,
 				C9099C0A1C6363B100E7A630 /* PopoverViewController.swift in Sources */,
 				C9888F101C678A440043C276 /* DelayUtil.swift in Sources */,
+				C98F4F011C69A8FC0024A931 /* ApplicationInfo.swift in Sources */,
 				C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */,
 				C9F9C75E1C66169B001E43D1 /* OAuthViewController.swift in Sources */,
+				C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */,
 				C9B3E1A41C60E1B10006D44B /* MainTabBarController.swift in Sources */,
 				C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */,
 				C9F9C75B1C64D311001E43D1 /* QRCodeCardViewController.swift in Sources */,

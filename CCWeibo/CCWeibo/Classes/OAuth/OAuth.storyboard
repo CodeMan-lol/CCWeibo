@@ -38,11 +38,20 @@
                     </navigationItem>
                     <connections>
                         <outlet property="webView" destination="ihI-aO-iaB" id="MX6-cb-aFr"/>
+                        <segue destination="6iA-dS-ZXZ" kind="presentation" identifier="OAuthModalToWelcome" modalTransitionStyle="flipHorizontal" id="vhR-6h-ocr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrF-lx-pgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1316" y="454"/>
+        </scene>
+        <!--WelcomeViewController-->
+        <scene sceneID="u4r-rm-XbA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="WelcomeViewController" id="6iA-dS-ZXZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ror-TL-4ve" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1871.5" y="454"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Uhy-MR-GOO">

@@ -18,17 +18,25 @@ class HomeTableViewController: BaseTableViewController {
         performSegueWithIdentifier("ShowQRCodeScanView", sender: nil)
 
     }
-    @IBAction func titleBtnClick(sender: TitleButton) {        
+    func titleBtnClick(sender: TitleButton) {
         performSegueWithIdentifier("PopoverTitleTable", sender: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         if !isLogin {
             (view as! VisitorView).setupViews(true, iconName: "visitordiscover_feed_image_house", info: "关注一些人，回这里看看有什么惊喜")
-
+        } else {
+            let titleBtn = TitleButton()
+            titleBtn.setTitle("\(UserInfo.loadUserInfo()!.screenName) ", forState: .Normal)
+            titleBtn.setImage(UIImage(named: "navigationbar_arrow_down"), forState: .Normal)
+            titleBtn.setImage(UIImage(named: "navigationbar_arrow_up"), forState: .Selected)
+            titleBtn.addTarget(self, action: "titleBtnClick:", forControlEvents: .TouchUpInside)
+            titleBtn.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+            navigationItem.titleView = titleBtn
+            titleBtn.sizeToFit()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
     }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)

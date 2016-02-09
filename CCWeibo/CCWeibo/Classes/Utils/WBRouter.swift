@@ -28,12 +28,8 @@ enum WBRouter: URLRequestConvertible {
             case .FetchAccessToken(let code):
                 return ("oauth2/access_token", ["client_id":WBKeys.AppKey, "client_secret":WBKeys.AppSecret, "grant_type":WBKeys.GrantType, "code":code, "redirect_uri":WBKeys.RedirectURI], "POST")
             case .FetchNewWeibo(let accessToken, var count, var page):
-                if count == nil {
-                    count = 20
-                }
-                if page == nil {
-                    page = 1
-                }
+                count = count ?? 20
+                page = page ?? 1
                 return ("statuses/friends_timeline", ["access_token": accessToken, "count": count!, "page": page!], "POST")
             case .FetchUserInfo(let accessToken, let uid):
                 return ("2/users/show.json", ["access_token": accessToken, "uid": uid], "GET")

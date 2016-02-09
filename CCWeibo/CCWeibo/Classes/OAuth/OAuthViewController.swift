@@ -51,7 +51,7 @@ class OAuthViewController: UIViewController {
             userAccount.uid = json["uid"].stringValue
             UserAccount.saveAccount(userAccount)
             self.loadUserInfo(userAccount) {
-                
+                self.performSegueWithIdentifier("OAuthModalToWelcome", sender: self)
             }
         }
     }

@@ -25,6 +25,58 @@
             </objects>
             <point key="canvasLocation" x="-924" y="94"/>
         </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="MlG-rK-8UU">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeViewController" id="Doj-ze-oul" customClass="WelcomeViewController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HUA-wq-H9M"/>
+                        <viewControllerLayoutGuide type="bottom" id="zJs-kj-Rym"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oyB-cI-7Ow">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_background" translatesAutoresizingMaskIntoConstraints="NO" id="z1c-if-iaE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default_big" translatesAutoresizingMaskIntoConstraints="NO" id="9gT-cE-FVJ">
+                                <rect key="frame" x="257" y="84" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="4Rw-XK-OPP"/>
+                                    <constraint firstAttribute="height" constant="85" id="gMG-tt-Yax"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎回来" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vqK-Lf-z9U">
+                                <rect key="frame" x="266" y="189" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vqK-Lf-z9U" firstAttribute="top" secondItem="HUA-wq-H9M" secondAttribute="bottom" constant="169" id="Fm9-pJ-5vC"/>
+                            <constraint firstItem="9gT-cE-FVJ" firstAttribute="top" secondItem="z1c-if-iaE" secondAttribute="top" constant="84" id="Hz4-QP-jrp"/>
+                            <constraint firstItem="z1c-if-iaE" firstAttribute="centerY" secondItem="oyB-cI-7Ow" secondAttribute="centerY" id="QKt-6G-GKF"/>
+                            <constraint firstItem="z1c-if-iaE" firstAttribute="centerX" secondItem="oyB-cI-7Ow" secondAttribute="centerX" id="aY8-XF-akI"/>
+                            <constraint firstItem="z1c-if-iaE" firstAttribute="height" secondItem="oyB-cI-7Ow" secondAttribute="height" id="dlT-Vc-u9l"/>
+                            <constraint firstItem="z1c-if-iaE" firstAttribute="width" secondItem="oyB-cI-7Ow" secondAttribute="width" id="kGr-eb-84u"/>
+                            <constraint firstItem="vqK-Lf-z9U" firstAttribute="centerX" secondItem="oyB-cI-7Ow" secondAttribute="centerX" id="pdR-D3-x0y"/>
+                            <constraint firstItem="9gT-cE-FVJ" firstAttribute="centerX" secondItem="oyB-cI-7Ow" secondAttribute="centerX" id="wZi-Ly-SXt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="iconImageView" destination="9gT-cE-FVJ" id="3Ff-Oe-1aT"/>
+                        <outlet property="iconTopCons" destination="Hz4-QP-jrp" id="7Gb-Sc-CNN"/>
+                        <outlet property="welcomeLabel" destination="vqK-Lf-z9U" id="pNe-Wl-vxd"/>
+                        <segue destination="WSQ-9H-O2R" kind="presentation" identifier="WelcomeModalToMain" modalTransitionStyle="crossDissolve" id="uXK-5X-fMu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="217-OV-rbW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-899" y="-676"/>
+        </scene>
         <!--Home-->
         <scene sceneID="4CS-h8-ada">
             <objects>
@@ -84,8 +136,59 @@
             </objects>
             <point key="canvasLocation" x="-471" y="385"/>
         </scene>
+        <!--New Feature View Controller-->
+        <scene sceneID="tZG-Vn-sBy">
+            <objects>
+                <collectionViewController storyboardIdentifier="NewFeatureViewController" id="hnn-pP-YG9" customClass="NewFeatureViewController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="TGj-2d-1gD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <collectionViewLayout key="collectionViewLayout" id="Rhj-ZF-mHR" customClass="FullLayout" customModule="CCWeibo" customModuleProvider="target"/>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NewFeatureImageCell" id="SVe-mB-iJY" customClass="NewFeatureCell" customModule="CCWeibo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ltf-Ax-ZPD">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="ltf-Ax-ZPD" firstAttribute="width" secondItem="SVe-mB-iJY" secondAttribute="width" id="1ub-L0-RGW"/>
+                                    <constraint firstItem="ltf-Ax-ZPD" firstAttribute="height" secondItem="SVe-mB-iJY" secondAttribute="height" id="Jmd-eF-Ufm"/>
+                                    <constraint firstItem="ltf-Ax-ZPD" firstAttribute="centerY" secondItem="SVe-mB-iJY" secondAttribute="centerY" id="Vp8-Pj-gdw"/>
+                                    <constraint firstItem="ltf-Ax-ZPD" firstAttribute="centerX" secondItem="SVe-mB-iJY" secondAttribute="centerX" id="fGA-W4-5g4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="newFeatureImageView" destination="ltf-Ax-ZPD" id="UKY-iz-EI2"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="hnn-pP-YG9" id="l59-Ee-Cd2"/>
+                            <outlet property="delegate" destination="hnn-pP-YG9" id="nmB-t1-EvK"/>
+                        </connections>
+                    </collectionView>
+                    <connections>
+                        <segue destination="WSQ-9H-O2R" kind="presentation" identifier="NewFeatureModalToMain" modalTransitionStyle="crossDissolve" id="227-8c-GWP"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nVs-Ot-E88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1592" y="-676"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="ad_background" width="320" height="480"/>
+        <image name="avatar_default_big" width="85" height="85"/>
         <image name="tabbar_background" width="1" height="44"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="227-8c-GWP"/>
+    </inferredMetricsTieBreakers>
 </document>

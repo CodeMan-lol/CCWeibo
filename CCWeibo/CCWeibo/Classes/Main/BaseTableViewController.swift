@@ -24,10 +24,6 @@ class BaseTableViewController: UITableViewController {
         visitorView.delegate = self
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "registerBtnDidClick")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "loginBtnDidClick")
-        let titleLabel = UILabel()
-        titleLabel.text = tabBarController!.tabBar.items![tabBarController!.selectedIndex].title!
-        navigationItem.titleView = titleLabel
-        titleLabel.sizeToFit()
 
     }
 }
