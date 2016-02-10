@@ -13,7 +13,7 @@ enum WBRouter: URLRequestConvertible {
     static let baseURLString = "https://api.weibo.com/"
     /// oauth2/access_token: OAuth2的access_token接口
     case FetchAccessToken(code: String)
-    /// statuses/friends_timeline: 获取当前登录用户及其所关注（授权）用户的最新微博
+    /// 2/statuses/home_timeline.json: 获取当前登录用户及其所关注（授权）用户的最新微博
     case FetchNewWeibo(accessToken: String, count: Int?, page: Int?)
     /// 2/users/show.json: 根据用户ID获取用户信息
     case FetchUserInfo(accessToken: String, uid: String)
@@ -30,7 +30,7 @@ enum WBRouter: URLRequestConvertible {
             case .FetchNewWeibo(let accessToken, var count, var page):
                 count = count ?? 20
                 page = page ?? 1
-                return ("statuses/friends_timeline", ["access_token": accessToken, "count": count!, "page": page!], "POST")
+                return ("2/statuses/home_timeline.json", ["access_token": accessToken, "count": count!, "page": page!], "GET")
             case .FetchUserInfo(let accessToken, let uid):
                 return ("2/users/show.json", ["access_token": accessToken, "uid": uid], "GET")
             }
