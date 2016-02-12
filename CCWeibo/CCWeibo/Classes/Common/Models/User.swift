@@ -15,6 +15,7 @@ class User: NSObject {
     var verified: Bool = false
     /// 认证类型: -1没有认证，0认证用户，2、3、5企业认证，220微博达人
     var verified_type: Int = 1
+    var mbrank: Int = 0
     
     
     /// 展示内容
@@ -28,6 +29,9 @@ class User: NSObject {
         case 220: return UIImage(named: "avatar_grassroot")
         default: return nil
         }
+    }
+    var mbrankIcon: UIImage? {
+        return UIImage(named: "common_icon_membership_level\(mbrank)")
     }
     
     

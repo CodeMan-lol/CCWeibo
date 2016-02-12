@@ -18,24 +18,23 @@ class HomeTableViewController: BaseTableViewController {
         performSegueWithIdentifier("ShowQRCodeScanView", sender: nil)
 
     }
+
     func titleBtnClick(sender: TitleButton) {
         performSegueWithIdentifier("PopoverTitleTable", sender: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.estimatedRowHeight = 200
-        tableView.rowHeight = UITableViewAutomaticDimension
         if !isLogin {
             (view as! VisitorView).setupViews(true, iconName: "visitordiscover_feed_image_house", info: "关注一些人，回这里看看有什么惊喜")
         } else {
             setTitleBtn()
+            tableView.estimatedRowHeight = 200
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
             Status.loadStatuses{
                 statuses in
                 self.statuses = statuses
                 self.tableView.reloadData()
-                self.view.setNeedsLayout()
             }
         }
     }
@@ -90,8 +89,12 @@ extension HomeTableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TeweetWithoutImageCell", forIndexPath: indexPath) as! TeweetWithoutImageCell
         cell.status = statuses[indexPath.row]
-        
         return cell
+    }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TeweetWithoutImageCell") as! TeweetWithoutImageCell
+        let status = statuses[indexPath.row]
+        return cell.rowHeightFor(status)
     }
     
 }

@@ -17,6 +17,7 @@
 		C9099C0A1C6363B100E7A630 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C091C6363B100E7A630 /* PopoverViewController.swift */; };
 		C9099C0C1C63652200E7A630 /* PopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0B1C63652200E7A630 /* PopoverSegue.swift */; };
 		C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */; };
+		C92047C11C6C2990005E5AA5 /* NSDate+WeiboDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */; };
 		C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */; };
 		C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0D1C67802C0043C276 /* UserInfo.swift */; };
 		C9888F101C678A440043C276 /* DelayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0F1C678A440043C276 /* DelayUtil.swift */; };
@@ -83,6 +84,7 @@
 		C9099C091C6363B100E7A630 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		C9099C0B1C63652200E7A630 /* PopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverSegue.swift; sourceTree = "<group>"; };
 		C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
+		C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+WeiboDate.swift"; sourceTree = "<group>"; };
 		C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRouter.swift; sourceTree = "<group>"; };
 		C9888F0D1C67802C0043C276 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C9888F0F1C678A440043C276 /* DelayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayUtil.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */,
 				C9CA60211C670DD000A9F999 /* String+FilePath.swift */,
 				C9888F0F1C678A440043C276 /* DelayUtil.swift */,
+				C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				C9B3E1A61C60EF720006D44B /* DiscoverTableViewController.swift in Sources */,
 				C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */,
 				C98AB0DA1C644F760021387E /* QRCodeViewController.swift in Sources */,
+				C92047C11C6C2990005E5AA5 /* NSDate+WeiboDate.swift in Sources */,
 				C9099C031C61C72F00E7A630 /* VisitorView.swift in Sources */,
 				C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */,
 				C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */,
