@@ -14,7 +14,7 @@ enum WBRouter: URLRequestConvertible {
     /// oauth2/access_token: OAuth2的access_token接口
     case FetchAccessToken(code: String)
     /// 2/statuses/home_timeline.json: 获取当前登录用户及其所关注（授权）用户的最新微博
-    case FetchNewWeibo(accessToken: String, count: Int?, page: Int?)
+    case FetchNewWeibo(accessToken: String, sinceId: Int?, maxId: Int?)
     /// 2/users/show.json: 根据用户ID获取用户信息
     case FetchUserInfo(accessToken: String, uid: String)
     
@@ -27,10 +27,10 @@ enum WBRouter: URLRequestConvertible {
             switch self {
             case .FetchAccessToken(let code):
                 return ("oauth2/access_token", ["client_id":WBKeys.AppKey, "client_secret":WBKeys.AppSecret, "grant_type":WBKeys.GrantType, "code":code, "redirect_uri":WBKeys.RedirectURI], "POST")
-            case .FetchNewWeibo(let accessToken, var count, var page):
-                count = count ?? 20
-                page = page ?? 1
-                return ("2/statuses/home_timeline.json", ["access_token": accessToken, "count": count!, "page": page!], "GET")
+            case .FetchNewWeibo(let accessToken, var sinceId, var maxId):
+                sinceId = sinceId ?? 0
+                maxId = maxId ?? 0
+                return ("2/statuses/home_timeline.json", ["access_token": accessToken, "since_id": sinceId!, "max_id": maxId!], "GET")
             case .FetchUserInfo(let accessToken, let uid):
                 return ("2/users/show.json", ["access_token": accessToken, "uid": uid], "GET")
             }

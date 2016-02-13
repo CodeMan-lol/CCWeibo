@@ -29,6 +29,8 @@
 		C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F4EC41C6990370024A931 /* WelcomeViewController.swift */; };
 		C98F4F011C69A8FC0024A931 /* ApplicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */; };
 		C998F6BC1C6EE14F00B900F7 /* RetweetTimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */; };
+		C998F6BE1C6F174D00B900F7 /* HomeRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6BD1C6F174D00B900F7 /* HomeRefreshControl.swift */; };
+		C998F6C01C6F177200B900F7 /* HomeRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C998F6BF1C6F177200B900F7 /* HomeRefreshControl.xib */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
 		C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1721C60D1510006D44B /* Main.storyboard */; };
 		C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1751C60D1510006D44B /* Assets.xcassets */; };
@@ -99,6 +101,8 @@
 		C98F4EC41C6990370024A931 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfo.swift; sourceTree = "<group>"; };
 		C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetweetTimeLineCell.swift; sourceTree = "<group>"; };
+		C998F6BD1C6F174D00B900F7 /* HomeRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRefreshControl.swift; sourceTree = "<group>"; };
+		C998F6BF1C6F177200B900F7 /* HomeRefreshControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRefreshControl.xib; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B3E16E1C60D1510006D44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B3E1731C60D1510006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				C9099C081C63638C00E7A630 /* Popover */,
 				C9B3E1AD1C618C970006D44B /* Home.storyboard */,
 				C9B3E1A71C60EF890006D44B /* HomeTableViewController.swift */,
+				C998F6BD1C6F174D00B900F7 /* HomeRefreshControl.swift */,
+				C998F6BF1C6F177200B900F7 /* HomeRefreshControl.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C998F6C01C6F177200B900F7 /* HomeRefreshControl.xib in Resources */,
 				C9B3E1791C60D1510006D44B /* LaunchScreen.storyboard in Resources */,
 				C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */,
 				C9E3B6E91C6A2E4500D1E98A /* Profile.storyboard in Resources */,
@@ -678,6 +685,7 @@
 				C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */,
 				C9B3E1A41C60E1B10006D44B /* MainTabBarController.swift in Sources */,
 				C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */,
+				C998F6BE1C6F174D00B900F7 /* HomeRefreshControl.swift in Sources */,
 				C9F9C75B1C64D311001E43D1 /* QRCodeCardViewController.swift in Sources */,
 				C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */,
 				C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */,

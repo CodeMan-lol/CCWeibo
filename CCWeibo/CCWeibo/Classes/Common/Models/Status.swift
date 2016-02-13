@@ -46,7 +46,9 @@ class Status: NSObject {
     var user: User?
     var retweeted_status: Status? {
         didSet {
-        thumbnailURLs = retweeted_status?.thumbnailURLs
+        if let URLs = retweeted_status?.thumbnailURLs {
+            thumbnailURLs = URLs
+        }
         }
     }
     
@@ -69,10 +71,11 @@ class Status: NSObject {
         
     }
     /// 加载最近的微博数据
-    class func loadStatuses(completion: (statuses: [Status])->()) {
-        Alamofire.request(WBRouter.FetchNewWeibo(accessToken: UserAccount.loadAccount()!.accessToken, count: nil, page: nil)).responseJSON { response in
+    class func loadStatuses(sinceId: Int?, maxId: Int?, completion: (statuses: [Status])->()) {
+        Alamofire.request(WBRouter.FetchNewWeibo(accessToken: UserAccount.loadAccount()!.accessToken, sinceId: sinceId, maxId: maxId)).responseJSON { response in
             guard response.result.error == nil, let data = response.result.value else {
-                
+                print(response.result)
+                completion(statuses: [])
                 return
             }
             let json = JSON(data)["statuses"]
@@ -87,6 +90,9 @@ class Status: NSObject {
     }
     /// 缓存所有缩略图
     private class func cacheAllThumbnail(statuses: [Status], completion: (statuses: [Status])->()) {
+        if statuses.count == 0 {
+            completion(statuses: statuses)
+        }
         let group = dispatch_group_create()
         for status in statuses {
             if let URLs = status.thumbnailURLs {

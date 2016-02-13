@@ -20,7 +20,15 @@ class HomeTableViewController: BaseTableViewController {
         performSegueWithIdentifier("ShowQRCodeScanView", sender: nil)
 
     }
-
+    private lazy var newStatuesCountLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.orangeColor()
+        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .Center
+        label.font = UIFont.systemFontOfSize(14)
+        label.hidden = true
+        return label
+    }()
     func titleBtnClick(sender: TitleButton) {
         performSegueWithIdentifier("PopoverTitleTable", sender: nil)
     }
@@ -33,20 +41,49 @@ class HomeTableViewController: BaseTableViewController {
             tableView.estimatedRowHeight = 200
 //          自动行高，如用手动行高，注释掉下一行代码
             tableView.rowHeight = UITableViewAutomaticDimension
+            refreshControl = HomeRefreshControl(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
+            refreshControl?.addTarget(self, action: "refreshTimeLine", forControlEvents: .ValueChanged)
+            
+            self.navigationController?.navigationBar.insertSubview(self.newStatuesCountLabel, atIndex: 0)
+            self.newStatuesCountLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30)
+
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
-            Status.loadStatuses{
-                statuses in
-                self.statuses = statuses
-                self.tableView.reloadData()
-            }
+            refreshControl?.beginRefreshing()
+            refreshTimeLine()
         }
     }
-    
+    func refreshTimeLine() {
+        let sinceId = statuses.first?.id
+        Status.loadStatuses(sinceId, maxId: nil) {
+            statuses in
+            self.refreshControl?.endRefreshing()
+            if statuses.count > 0 {
+                self.statuses.insertContentsOf(statuses, at: 0)
+                self.tableView.reloadData()
+                // 出现提示文字
+                self.showNewStatuesCountAnimate(statuses.count)
+            }
+            
+        }
+    }
+    private func showNewStatuesCountAnimate(count: Int) {
+        self.newStatuesCountLabel.text = "\(count)条新微博"
+        UIView.animateWithDuration(1, animations: {
+            self.newStatuesCountLabel.frame.origin.y += 44
+            self.newStatuesCountLabel.hidden = false
+            }, completion: { _ in
+                UIView.animateWithDuration(1, delay: 1, options: [], animations: { 
+                    self.newStatuesCountLabel.frame.origin.y -= 44
+                    }, completion: { _ in
+                        self.newStatuesCountLabel.hidden = true
+
+                })
+        })
+    }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
     func changeTitleArrow() {
         let titleBtn = navigationItem.titleView as! TitleButton
         titleBtn.selected = !titleBtn.selected
@@ -74,11 +111,17 @@ class HomeTableViewController: BaseTableViewController {
         }
     }
 
-    
-    
-
 }
-// TableViewDelegate & TableViewDataSource
+// MARK: - ScrollViewDelegate
+//extension HomeTableViewController {
+//    override func scrollViewDidScroll(scrollView: UIScrollView) {
+//        let offsetY = -scrollView.contentOffset.y - scrollView.contentInset.top
+//        newStatuesCountLabel.center = CGPoint(x: view.bounds.width / 2, y: -CGRectGetHeight(newStatuesCountLabel.bounds)/2-offsetY)
+//        
+//    }
+//}
+
+// MARK: - TableViewDelegate & TableViewDataSource
 extension HomeTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
