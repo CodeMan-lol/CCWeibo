@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class TeweetWithoutImageCell: UITableViewCell {
+class TimeLineCell: UITableViewCell {
 
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,16 +24,9 @@ class TeweetWithoutImageCell: UITableViewCell {
         picturesCollectionView.dataSource = self
         }
     }
-    @IBOutlet weak var optionBarView: UIStackView!
-    
-    
+    @IBOutlet weak var footerBar: UIImageView!
     @IBOutlet weak var picListHeightCons: NSLayoutConstraint!
     
-    @IBOutlet weak var retweetBtn: UIButton!
-    @IBOutlet weak var commentBtn: UIButton!
-    @IBOutlet weak var likeBtn: UIButton!
-    
-
     let thumbnailMargin: CGFloat = 10
     
     
@@ -50,10 +43,10 @@ class TeweetWithoutImageCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     /// 设置单元格
     private func setupUI() {
+        self.layoutIfNeeded()
         nameLabel.text = status?.user?.name
         timeLabel.text = status?.created_at
         sourceLabel.text = "来自 \(status!.source!)"
@@ -69,13 +62,15 @@ class TeweetWithoutImageCell: UITableViewCell {
         // 会员图标设置
         vipIconView.image = status?.user?.mbrankIcon
         nameLabel.textColor = vipIconView.image == nil ? UIColor.darkGrayColor() : UIColor.orangeColor()
-
-        (picturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = resizePictureCollectionView() ?? CGSize(width: 1, height: 1)
+        if let itemSize = resizePictureCollectionView() {
+            self.layoutIfNeeded()
+            (picturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = itemSize
+        }
         picturesCollectionView.reloadData()
-//        // 选中背景设置
-//        let selectedView = UIView(frame: self.bounds)
-//        selectedView.backgroundColor = UIColor.groupTableViewBackgroundColor()
-//        self.selectedBackgroundView = selectedView
+        // 选中背景设置
+        let selectedView = UIView(frame: self.bounds)
+        selectedView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0)
+        self.selectedBackgroundView = selectedView
         
     }
     /**
@@ -95,33 +90,36 @@ class TeweetWithoutImageCell: UITableViewCell {
         let picCount = picURLs.count
         switch picCount {
         case 1:
-            thumbnailWidth = UIScreen.mainScreen().bounds.width - 16
+            thumbnailWidth = picturesCollectionView.bounds.width
             picListHeightCons.constant = 150
+            return CGSize(width: thumbnailWidth, height: 150)
         case 2:
-            thumbnailWidth = (UIScreen.mainScreen().bounds.width - 16 - thumbnailMargin) / 2
+            thumbnailWidth = (picturesCollectionView.bounds.width - thumbnailMargin) / 2
             picListHeightCons.constant = thumbnailHeight
+
         case 4:
-            thumbnailWidth = (UIScreen.mainScreen().bounds.width - 16 - thumbnailMargin) / 2
+            thumbnailWidth = (picturesCollectionView.bounds.width - thumbnailMargin) / 2
             picListHeightCons.constant = CGFloat(thumbnailHeight) * 2 + CGFloat(thumbnailMargin)
+
         default:
             let rowNum = (picCount - 1) / 3 + 1
-            thumbnailWidth = (UIScreen.mainScreen().bounds.width - 16 - thumbnailMargin * 2) / 3
+            thumbnailWidth = (picturesCollectionView.bounds.width - thumbnailMargin * 2) / 3
             picListHeightCons.constant = thumbnailHeight * CGFloat(rowNum) + thumbnailMargin * CGFloat(rowNum-1)
+
         }
         return CGSize(width: thumbnailWidth, height: thumbnailHeight)
     }
-    
+    /// 手动设置行高的方法
     func rowHeightFor(status: Status) -> CGFloat {
         self.status = status
         self.layoutIfNeeded()
-        print(optionBarView.frame)
-        return optionBarView.frame.maxY
+        return footerBar.frame.maxY
     }
     
     
 }
 // MARK: - 图片集合 DateSouce和Delegate
-extension TeweetWithoutImageCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return status?.thumbnailURLs?.count ?? 0

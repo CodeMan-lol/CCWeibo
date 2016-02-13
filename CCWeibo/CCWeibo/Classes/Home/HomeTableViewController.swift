@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+private let TimeLineReuseId = "TimeLineCell"
 class HomeTableViewController: BaseTableViewController {
     private var statuses: [Status] = []
     @IBAction func leftBarItemClick(sender: UIButton) {
@@ -29,6 +29,7 @@ class HomeTableViewController: BaseTableViewController {
         } else {
             setTitleBtn()
             tableView.estimatedRowHeight = 200
+//            tableView.rowHeight = UITableViewAutomaticDimension
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
             Status.loadStatuses{
@@ -87,12 +88,16 @@ extension HomeTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TeweetWithoutImageCell", forIndexPath: indexPath) as! TeweetWithoutImageCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId, forIndexPath: indexPath) as! TimeLineCell
+        // 给定一个宽度，让cell先自行布局
+        cell.bounds.size.width = tableView.bounds.width        
         cell.status = statuses[indexPath.row]
         return cell
     }
+    // 如需手动设置行高，开启以下代码，注释掉自动行高调整
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCellWithIdentifier("TeweetWithoutImageCell") as! TeweetWithoutImageCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId) as! TimeLineCell
+        cell.bounds.size.width = tableView.bounds.size.width
         let status = statuses[indexPath.row]
         return cell.rowHeightFor(status)
     }

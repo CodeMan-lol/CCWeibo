@@ -87,11 +87,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CCWeibo/Alamofire.framework"
   install_framework "Pods-CCWeibo/Kingfisher.framework"
   install_framework "Pods-CCWeibo/MBProgressHUD.framework"
+  install_framework "Pods-CCWeibo/SnapKit.framework"
   install_framework "Pods-CCWeibo/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CCWeibo/Alamofire.framework"
   install_framework "Pods-CCWeibo/Kingfisher.framework"
   install_framework "Pods-CCWeibo/MBProgressHUD.framework"
+  install_framework "Pods-CCWeibo/SnapKit.framework"
   install_framework "Pods-CCWeibo/SwiftyJSON.framework"
 fi
