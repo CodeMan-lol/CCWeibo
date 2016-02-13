@@ -92,6 +92,7 @@ class Status: NSObject {
     private class func cacheAllThumbnail(statuses: [Status], completion: (statuses: [Status])->()) {
         if statuses.count == 0 {
             completion(statuses: statuses)
+            return
         }
         let group = dispatch_group_create()
         for status in statuses {

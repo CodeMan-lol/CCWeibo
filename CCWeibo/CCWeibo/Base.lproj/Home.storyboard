@@ -13,6 +13,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="bKM-mE-9Yn">
+                            <rect key="frame" x="0.0" y="687" width="600" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TimeLineCell" rowHeight="246" id="mhd-Gt-0Et" customClass="TimeLineCell" customModule="CCWeibo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="246"/>
@@ -448,6 +452,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="1200"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="bKM-mE-9Yn" id="5es-jO-nMe"/>
                         <segue destination="zjV-ge-T2z" kind="presentation" identifier="PopoverTitleTable" customClass="PopoverSegue" customModule="CCWeibo" customModuleProvider="target" id="fsh-2R-hyI"/>
                         <segue destination="FQA-21-LEn" kind="presentation" identifier="ShowQRCodeScanView" id="2Fq-dI-Fjj"/>
                     </connections>

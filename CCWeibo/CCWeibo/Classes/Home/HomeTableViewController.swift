@@ -14,6 +14,7 @@ class HomeTableViewController: BaseTableViewController {
     @IBAction func leftBarItemClick(sender: UIButton) {
         print(__FUNCTION__)
     }
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 //  行高缓存，如用手动行高需要开启下一行代码
 //    let rowCache = NSCache()
     @IBAction func rightBarItemClick(sender: UIButton) {
@@ -53,6 +54,7 @@ class HomeTableViewController: BaseTableViewController {
             refreshTimeLine()
         }
     }
+    // 下拉刷新
     func refreshTimeLine() {
         let sinceId = statuses.first?.id
         Status.loadStatuses(sinceId, maxId: nil) {
@@ -65,6 +67,21 @@ class HomeTableViewController: BaseTableViewController {
                 self.showNewStatuesCountAnimate(statuses.count)
             }
             
+        }
+    }
+    // 上拉加载更多
+    func pullUptoLoadMore() {
+        let maxId = statuses.last!.id - 1
+        activityIndicatorView.startAnimating()
+        activityIndicatorView.hidden = false
+        Status.loadStatuses(nil, maxId: maxId) {
+            statuses in
+            if statuses.count > 0 {
+                self.statuses.insertContentsOf(statuses, at: self.statuses.count)
+                self.tableView.reloadData()
+                self.activityIndicatorView.stopAnimating()
+                self.activityIndicatorView.hidden = true
+            }
         }
     }
     private func showNewStatuesCountAnimate(count: Int) {
@@ -141,6 +158,9 @@ extension HomeTableViewController {
         // 给定一个宽度，让cell先自行布局
         cell!.bounds.size.width = tableView.bounds.width        
         cell!.status = statuses[indexPath.row]
+        if indexPath.row == statuses.count - 1 {
+            pullUptoLoadMore()
+        }
         return cell!
     }
 //  如需手动设置行高，开启以下代码，注释掉自动行高调整
