@@ -8,12 +8,14 @@
 
 import UIKit
 private let TimeLineReuseId = "TimeLineCell"
+private let RetweetTimeLineReuseId = "RetweetTimeLineCell"
 class HomeTableViewController: BaseTableViewController {
     private var statuses: [Status] = []
     @IBAction func leftBarItemClick(sender: UIButton) {
         print(__FUNCTION__)
     }
-    
+//  行高缓存，如用手动行高需要开启下一行代码
+//    let rowCache = NSCache()
     @IBAction func rightBarItemClick(sender: UIButton) {
         performSegueWithIdentifier("ShowQRCodeScanView", sender: nil)
 
@@ -29,7 +31,8 @@ class HomeTableViewController: BaseTableViewController {
         } else {
             setTitleBtn()
             tableView.estimatedRowHeight = 200
-//            tableView.rowHeight = UITableViewAutomaticDimension
+//          自动行高，如用手动行高，注释掉下一行代码
+            tableView.rowHeight = UITableViewAutomaticDimension
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
             Status.loadStatuses{
@@ -78,28 +81,36 @@ class HomeTableViewController: BaseTableViewController {
 // TableViewDelegate & TableViewDataSource
 extension HomeTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return statuses.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId, forIndexPath: indexPath) as! TimeLineCell
+        var cell: TimeLineCell? = nil
+        if let _ = statuses[indexPath.row].retweeted_status {
+            cell = tableView.dequeueReusableCellWithIdentifier(RetweetTimeLineReuseId, forIndexPath: indexPath) as? RetweetTimeLineCell
+        } else {
+            cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId, forIndexPath: indexPath) as? TimeLineCell
+        }
         // 给定一个宽度，让cell先自行布局
-        cell.bounds.size.width = tableView.bounds.width        
-        cell.status = statuses[indexPath.row]
-        return cell
+        cell!.bounds.size.width = tableView.bounds.width        
+        cell!.status = statuses[indexPath.row]
+        return cell!
     }
-    // 如需手动设置行高，开启以下代码，注释掉自动行高调整
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId) as! TimeLineCell
-        cell.bounds.size.width = tableView.bounds.size.width
-        let status = statuses[indexPath.row]
-        return cell.rowHeightFor(status)
-    }
+//  如需手动设置行高，开启以下代码，注释掉自动行高调整
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        let status = statuses[indexPath.row]
+//        if let height = rowCache.objectForKey(status.id) as? CGFloat {
+//            return height
+//        }
+//        let cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId) as! TimeLineCell
+//        cell.bounds.size.width = tableView.bounds.size.width
+//        let height = cell.rowHeightFor(status)
+//        rowCache.setObject(height, forKey: status.id)
+//        return height
+//    }
     
 }

@@ -26,8 +26,10 @@ class TimeLineCell: UITableViewCell {
     }
     @IBOutlet weak var footerBar: UIImageView!
     @IBOutlet weak var picListHeightCons: NSLayoutConstraint!
+    @IBOutlet weak var picListBottomCons: NSLayoutConstraint!
     
-    let thumbnailMargin: CGFloat = 10
+    // 图片列表中图片之间的间隙
+    let thumbnailMargin: CGFloat = 8
     
     
     var status: Status? {
@@ -45,7 +47,7 @@ class TimeLineCell: UITableViewCell {
 
     }
     /// 设置单元格
-    private func setupUI() {
+    func setupUI() {
         self.layoutIfNeeded()
         nameLabel.text = status?.user?.name
         timeLabel.text = status?.created_at
@@ -64,12 +66,16 @@ class TimeLineCell: UITableViewCell {
         nameLabel.textColor = vipIconView.image == nil ? UIColor.darkGrayColor() : UIColor.orangeColor()
         if let itemSize = resizePictureCollectionView() {
             self.layoutIfNeeded()
-            (picturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = itemSize
+            let layout = (picturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout)
+            layout.itemSize = itemSize
+            layout.minimumLineSpacing = thumbnailMargin
+            layout.minimumInteritemSpacing = thumbnailMargin
+            
         }
         picturesCollectionView.reloadData()
         // 选中背景设置
         let selectedView = UIView(frame: self.bounds)
-        selectedView.backgroundColor = UIColor(red:0.94, green:0.94, blue:0.94, alpha:1.0)
+        selectedView.backgroundColor = UIColor(white: 0.98, alpha: 1)
         self.selectedBackgroundView = selectedView
         
     }
@@ -85,6 +91,7 @@ class TimeLineCell: UITableViewCell {
         }
         guard let picURLs = status?.thumbnailURLs else {
             picListHeightCons.constant = 0
+            picListBottomCons.constant = 0
             return nil
         }
         let picCount = picURLs.count
@@ -92,6 +99,7 @@ class TimeLineCell: UITableViewCell {
         case 1:
             thumbnailWidth = picturesCollectionView.bounds.width
             picListHeightCons.constant = 150
+            picListBottomCons.constant = 8
             return CGSize(width: thumbnailWidth, height: 150)
         case 2:
             thumbnailWidth = (picturesCollectionView.bounds.width - thumbnailMargin) / 2
@@ -107,6 +115,7 @@ class TimeLineCell: UITableViewCell {
             picListHeightCons.constant = thumbnailHeight * CGFloat(rowNum) + thumbnailMargin * CGFloat(rowNum-1)
 
         }
+        picListBottomCons.constant = 8
         return CGSize(width: thumbnailWidth, height: thumbnailHeight)
     }
     /// 手动设置行高的方法

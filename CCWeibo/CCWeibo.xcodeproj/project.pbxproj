@@ -28,6 +28,7 @@
 		C98DA5AF1C6E152800A60886 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98DA5AE1C6E152800A60886 /* UIButton+Extension.swift */; };
 		C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F4EC41C6990370024A931 /* WelcomeViewController.swift */; };
 		C98F4F011C69A8FC0024A931 /* ApplicationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */; };
+		C998F6BC1C6EE14F00B900F7 /* RetweetTimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
 		C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1721C60D1510006D44B /* Main.storyboard */; };
 		C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1751C60D1510006D44B /* Assets.xcassets */; };
@@ -97,6 +98,7 @@
 		C98DA5AE1C6E152800A60886 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		C98F4EC41C6990370024A931 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		C98F4F001C69A8FC0024A931 /* ApplicationInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfo.swift; sourceTree = "<group>"; };
+		C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetweetTimeLineCell.swift; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B3E16E1C60D1510006D44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B3E1731C60D1510006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E3B6F21C6B49E600D1E98A /* TimeLineCell.swift */,
+				C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -670,6 +673,7 @@
 				C98F4F011C69A8FC0024A931 /* ApplicationInfo.swift in Sources */,
 				C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */,
 				C9E3B6EE1C6B2B4400D1E98A /* Status.swift in Sources */,
+				C998F6BC1C6EE14F00B900F7 /* RetweetTimeLineCell.swift in Sources */,
 				C9F9C75E1C66169B001E43D1 /* OAuthViewController.swift in Sources */,
 				C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */,
 				C9B3E1A41C60E1B10006D44B /* MainTabBarController.swift in Sources */,

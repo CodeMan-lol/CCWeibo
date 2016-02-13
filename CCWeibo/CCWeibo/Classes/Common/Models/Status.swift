@@ -41,9 +41,14 @@ class Status: NSObject {
         }
         }
     }
+    // 原创微博缩略图或者转发微博缩略图的url数组
     var thumbnailURLs: [NSURL]?
     var user: User?
-    
+    var retweeted_status: Status? {
+        didSet {
+        thumbnailURLs = retweeted_status?.thumbnailURLs
+        }
+    }
     
     init(dict: [String: AnyObject]) {
         super.init()
@@ -52,6 +57,10 @@ class Status: NSObject {
     override func setValue(value: AnyObject?, forKey key: String) {
         if key == "user" {
             user = User(dict: value as! [String: AnyObject])
+            return
+        }
+        if key == "retweeted_status" {
+            retweeted_status = Status(dict: value as! [String: AnyObject])
             return
         }
         super.setValue(value, forKey: key)
