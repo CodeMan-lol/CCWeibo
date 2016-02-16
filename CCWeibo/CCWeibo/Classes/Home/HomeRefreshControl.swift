@@ -85,7 +85,6 @@ class HomeRefreshControl: UIRefreshControl {
         animating = true
     }
     private func endAnimate() {
-        progress = 0.0
         animating = false
         circleLayer.removeAllAnimations()
     }

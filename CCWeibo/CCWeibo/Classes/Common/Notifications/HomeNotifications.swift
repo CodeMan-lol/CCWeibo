@@ -10,4 +10,6 @@ import Foundation
 struct HomeNotifications {
     static let TitleViewWillShow = "Home.TitleViewWillShow"
     static let TitleViewWillHide = "Home.TitleViewWillHide"
+    
+    static let DidSelectCollectionImage = "Home.DidSelectCollectionImage"
 }

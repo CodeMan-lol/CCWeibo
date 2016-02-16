@@ -28,6 +28,7 @@ class TimeLineCell: UITableViewCell {
     @IBOutlet weak var picListHeightCons: NSLayoutConstraint!
     @IBOutlet weak var picListBottomCons: NSLayoutConstraint!
     
+    
     // 图片列表中图片之间的间隙
     let thumbnailMargin: CGFloat = 8
     
@@ -50,7 +51,7 @@ class TimeLineCell: UITableViewCell {
     func setupUI() {
         self.layoutIfNeeded()
         nameLabel.text = status?.user?.name
-        timeLabel.text = status?.created_at
+        timeLabel.text = status?.createTimeFoTimeLabel
         sourceLabel.text = "来自 \(status!.source!)"
         contentLabel.text = status?.text
         // 头像设置
@@ -89,7 +90,7 @@ class TimeLineCell: UITableViewCell {
         var thumbnailHeight: CGFloat {
             return thumbnailWidth
         }
-        guard let picURLs = status?.thumbnailURLs else {
+        guard let picURLs = status?.thumbnailURLs?[ApplicationInfo.PictureQuality] else {
             picListHeightCons.constant = 0
             picListBottomCons.constant = 0
             return nil
@@ -131,14 +132,19 @@ class TimeLineCell: UITableViewCell {
 extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return status?.thumbnailURLs?.count ?? 0
+        return status?.thumbnailURLs?[ApplicationInfo.PictureQuality].count ?? 0
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PictureCollectionViewCell", forIndexPath: indexPath) as! PictureCollectionViewCell
-        cell.pictureURL = self.status?.thumbnailURLs?[indexPath.row]
+        cell.pictureURL = self.status?.thumbnailURLs?[ApplicationInfo.PictureQuality][indexPath.row]
         return cell
     }
-    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! PictureCollectionViewCell
+        selectedCell.imageView.contentMode = .ScaleToFill
+        let notification = NSNotification(name: HomeNotifications.DidSelectCollectionImage, object: nil, userInfo: ["imageURLs": (status?.thumbnailURLs![ApplicationInfo.PictureQuality])!, "currentIndex": indexPath.row, "selectedImageCell": selectedCell])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
 }
 
 // MARK: - 图片集合单元格

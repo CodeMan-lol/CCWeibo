@@ -11,6 +11,7 @@ private let TimeLineReuseId = "TimeLineCell"
 private let RetweetTimeLineReuseId = "RetweetTimeLineCell"
 class HomeTableViewController: BaseTableViewController {
     private var statuses: [Status] = []
+    var selectedImageCell: PictureCollectionViewCell?
     @IBAction func leftBarItemClick(sender: UIButton) {
         print(__FUNCTION__)
     }
@@ -50,6 +51,7 @@ class HomeTableViewController: BaseTableViewController {
 
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickImage:", name: HomeNotifications.DidSelectCollectionImage, object: nil)
             refreshControl?.beginRefreshing()
             refreshTimeLine()
         }
@@ -73,15 +75,13 @@ class HomeTableViewController: BaseTableViewController {
     func pullUptoLoadMore() {
         let maxId = statuses.last!.id - 1
         activityIndicatorView.startAnimating()
-        activityIndicatorView.hidden = false
         Status.loadStatuses(nil, maxId: maxId) {
             statuses in
             if statuses.count > 0 {
                 self.statuses.insertContentsOf(statuses, at: self.statuses.count)
                 self.tableView.reloadData()
-                self.activityIndicatorView.stopAnimating()
-                self.activityIndicatorView.hidden = true
             }
+            self.activityIndicatorView.stopAnimating()
         }
     }
     private func showNewStatuesCountAnimate(count: Int) {
@@ -105,6 +105,10 @@ class HomeTableViewController: BaseTableViewController {
         let titleBtn = navigationItem.titleView as! TitleButton
         titleBtn.selected = !titleBtn.selected
     }
+    func didClickImage(notification: NSNotification) {
+        selectedImageCell = notification.userInfo?["selectedImageCell"] as? PictureCollectionViewCell
+        performSegueWithIdentifier("HomeModalToImageBrowser", sender: notification.userInfo)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -124,20 +128,16 @@ class HomeTableViewController: BaseTableViewController {
     // MARK: - 转场相关
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segue = segue as? PopoverSegue {
-            segue.preferredPopFrame = CGRect(x: UIScreen.mainScreen().bounds.midX - 100, y: 56, width: 200, height: 300)            
+            segue.preferredPopFrame = CGRect(x: UIScreen.mainScreen().bounds.midX - 100, y: 56, width: 200, height: 300)
+            return
+        }
+        if let destinationVC =  segue.destinationViewController as? ImageBrowserViewController {
+            destinationVC.imageURLs = sender!["imageURLs"] as? [NSURL]
+            destinationVC.currentIndex = sender!["currentIndex"] as? Int
         }
     }
 
 }
-// MARK: - ScrollViewDelegate
-//extension HomeTableViewController {
-//    override func scrollViewDidScroll(scrollView: UIScrollView) {
-//        let offsetY = -scrollView.contentOffset.y - scrollView.contentInset.top
-//        newStatuesCountLabel.center = CGPoint(x: view.bounds.width / 2, y: -CGRectGetHeight(newStatuesCountLabel.bounds)/2-offsetY)
-//        
-//    }
-//}
-
 // MARK: - TableViewDelegate & TableViewDataSource
 extension HomeTableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

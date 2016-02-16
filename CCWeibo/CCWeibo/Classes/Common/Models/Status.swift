@@ -12,11 +12,10 @@ import SwiftyJSON
 import Kingfisher
 
 class Status: NSObject {
-    var created_at: String? {
-        didSet {
-        guard let createdAt = created_at where createdAt != "" else { return }
-        created_at = NSDate.dateFromeWeiboDateStr(createdAt).weiboDescriptionDate()
-        }
+    var created_at: String?
+    var createTimeFoTimeLabel: String {
+        guard let createdAt = created_at where createdAt != "" else { return "" }
+        return NSDate.dateFromeWeiboDateStr(createdAt).weiboDescriptionDate()
     }
     var id: Int = 1
     var text: String?
@@ -32,17 +31,23 @@ class Status: NSObject {
     var pic_urls: [[String: AnyObject]] = [] {
         didSet {
         if pic_urls.count > 0 {
-            thumbnailURLs = []
+            thumbnailURLs = [[],[],[]]
             for dict in pic_urls {
                 if let URLStr = dict["thumbnail_pic"] as? String {
-                    thumbnailURLs!.append(NSURL(string: URLStr)!)
+                    // 大图
+                    let bigURL = URLStr.stringByReplacingOccurrencesOfString("thumbnail", withString: "bmiddle")
+                    // 原图
+                    let originURL = URLStr.stringByReplacingOccurrencesOfString("thumbnail", withString: "large")
+                    thumbnailURLs![0].append(NSURL(string: URLStr)!)
+                    thumbnailURLs![1].append(NSURL(string: bigURL)!)
+                    thumbnailURLs![2].append(NSURL(string: originURL)!)
                 }
             }
         }
         }
     }
-    // 原创微博缩略图或者转发微博缩略图的url数组
-    var thumbnailURLs: [NSURL]?
+    // 原创微博缩略图或者转发微博图集的url数组，0:缩略图，1:大图，2:原图
+    var thumbnailURLs: [[NSURL]]?
     var user: User?
     var retweeted_status: Status? {
         didSet {
@@ -96,7 +101,7 @@ class Status: NSObject {
         }
         let group = dispatch_group_create()
         for status in statuses {
-            if let URLs = status.thumbnailURLs {
+            if let URLs = status.thumbnailURLs?[ApplicationInfo.PictureQuality] {
                 for thumbnailURL in URLs {
                     dispatch_group_enter(group)
                     KingfisherManager.sharedManager.downloader.downloadImageWithURL(thumbnailURL, progressBlock: nil) {

@@ -8,5 +8,8 @@
 
 import Foundation
 struct ApplicationInfo {
+    // 本地版本
     static let ApplicationVersionKey = "cc.cache.CCWeibo.sandboxVersion"
+    // 默认的图片加载质量
+    static let PictureQuality = 1
 }

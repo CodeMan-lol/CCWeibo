@@ -31,6 +31,8 @@
 		C998F6BC1C6EE14F00B900F7 /* RetweetTimeLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */; };
 		C998F6BE1C6F174D00B900F7 /* HomeRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6BD1C6F174D00B900F7 /* HomeRefreshControl.swift */; };
 		C998F6C01C6F177200B900F7 /* HomeRefreshControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C998F6BF1C6F177200B900F7 /* HomeRefreshControl.xib */; };
+		C998F6C31C7178CB00B900F7 /* ImageBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6C21C7178CB00B900F7 /* ImageBrowserViewController.swift */; };
+		C998F6C51C717C2700B900F7 /* ImageBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6C41C717C2700B900F7 /* ImageBrowserCell.swift */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
 		C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1721C60D1510006D44B /* Main.storyboard */; };
 		C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1751C60D1510006D44B /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 		C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1B21C618CDB0006D44B /* Message.storyboard */; };
 		C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */; };
 		C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA60211C670DD000A9F999 /* String+FilePath.swift */; };
+		C9E11DB11C73021100F6DA41 /* MagicMoveTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */; };
+		C9E11DB41C73082100F6DA41 /* MagicMoveSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E11DB31C73082100F6DA41 /* MagicMoveSegue.swift */; };
 		C9E3B6E91C6A2E4500D1E98A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E3B6E81C6A2E4500D1E98A /* Profile.storyboard */; };
 		C9E3B6EB1C6A2E4F00D1E98A /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E3B6EA1C6A2E4F00D1E98A /* Discover.storyboard */; };
 		C9E3B6EE1C6B2B4400D1E98A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3B6ED1C6B2B4400D1E98A /* Status.swift */; };
@@ -103,6 +107,8 @@
 		C998F6BB1C6EE14F00B900F7 /* RetweetTimeLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetweetTimeLineCell.swift; sourceTree = "<group>"; };
 		C998F6BD1C6F174D00B900F7 /* HomeRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRefreshControl.swift; sourceTree = "<group>"; };
 		C998F6BF1C6F177200B900F7 /* HomeRefreshControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeRefreshControl.xib; sourceTree = "<group>"; };
+		C998F6C21C7178CB00B900F7 /* ImageBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBrowserViewController.swift; sourceTree = "<group>"; };
+		C998F6C41C717C2700B900F7 /* ImageBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBrowserCell.swift; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B3E16E1C60D1510006D44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B3E1731C60D1510006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 		C9B3E1B31C618CDB0006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Message.storyboard; sourceTree = "<group>"; };
 		C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		C9CA60211C670DD000A9F999 /* String+FilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FilePath.swift"; sourceTree = "<group>"; };
+		C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicMoveTransion.swift; sourceTree = "<group>"; };
+		C9E11DB31C73082100F6DA41 /* MagicMoveSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicMoveSegue.swift; sourceTree = "<group>"; };
 		C9E3B6E81C6A2E4500D1E98A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		C9E3B6EA1C6A2E4F00D1E98A /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		C9E3B6ED1C6B2B4400D1E98A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -223,6 +231,17 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		C998F6C11C7177B300B900F7 /* ImageBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */,
+				C998F6C21C7178CB00B900F7 /* ImageBrowserViewController.swift */,
+				C998F6C41C717C2700B900F7 /* ImageBrowserCell.swift */,
+				C9E11DB31C73082100F6DA41 /* MagicMoveSegue.swift */,
+			);
+			path = ImageBrowser;
+			sourceTree = "<group>";
+		};
 		C9B3E1621C60D1510006D44B = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +324,7 @@
 		C9B3E19E1C60DBB70006D44B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C998F6C11C7177B300B900F7 /* ImageBrowser */,
 				C9E3B6F11C6B49BB00D1E98A /* Cells */,
 				C98AB0D81C644F220021387E /* QRCode */,
 				C9099C081C63638C00E7A630 /* Popover */,
@@ -675,6 +695,7 @@
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
 				C9888F131C6799F50043C276 /* NewFeatureViewController.swift in Sources */,
 				C9E3B6F01C6B38D000D1E98A /* User.swift in Sources */,
+				C998F6C31C7178CB00B900F7 /* ImageBrowserViewController.swift in Sources */,
 				C9099C0A1C6363B100E7A630 /* PopoverViewController.swift in Sources */,
 				C9888F101C678A440043C276 /* DelayUtil.swift in Sources */,
 				C98F4F011C69A8FC0024A931 /* ApplicationInfo.swift in Sources */,
@@ -692,6 +713,8 @@
 				C9099C051C62DF4C00E7A630 /* TitleButton.swift in Sources */,
 				C98AB0D71C64408B0021387E /* HomeNotifications.swift in Sources */,
 				C98DA5AF1C6E152800A60886 /* UIButton+Extension.swift in Sources */,
+				C9E11DB11C73021100F6DA41 /* MagicMoveTransion.swift in Sources */,
+				C9E11DB41C73082100F6DA41 /* MagicMoveSegue.swift in Sources */,
 				C9E3B6F31C6B49E600D1E98A /* TimeLineCell.swift in Sources */,
 				C9B3E1AA1C60EF9B0006D44B /* MessageTableViewController.swift in Sources */,
 				C9B3E1A61C60EF720006D44B /* DiscoverTableViewController.swift in Sources */,
@@ -699,6 +722,7 @@
 				C98AB0DA1C644F760021387E /* QRCodeViewController.swift in Sources */,
 				C92047C11C6C2990005E5AA5 /* NSDate+WeiboDate.swift in Sources */,
 				C9099C031C61C72F00E7A630 /* VisitorView.swift in Sources */,
+				C998F6C51C717C2700B900F7 /* ImageBrowserCell.swift in Sources */,
 				C98DA5AD1C6E150000A60886 /* UILabel+Extension.swift in Sources */,
 				C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */,
 				C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */,
@@ -810,7 +834,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -848,7 +872,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
