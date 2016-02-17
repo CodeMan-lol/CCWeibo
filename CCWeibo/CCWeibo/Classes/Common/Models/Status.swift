@@ -90,49 +90,8 @@ class Status: NSObject {
                 let status = Status(dict: statusDict)
                 statuses.append(status)
             }
-            cacheAllThumbnail(statuses, completion: completion)
-        }
-    }
-    /// 缓存所有缩略图
-    private class func cacheAllThumbnail(statuses: [Status], completion: (statuses: [Status])->()) {
-        if statuses.count == 0 {
-            completion(statuses: statuses)
-            return
-        }
-        let group = dispatch_group_create()
-        for status in statuses {
-            if let URLs = status.thumbnailURLs?[ApplicationInfo.PictureQuality] {
-                for thumbnailURL in URLs {
-                    dispatch_group_enter(group)
-                    KingfisherManager.sharedManager.downloader.downloadImageWithURL(thumbnailURL, progressBlock: nil) {
-                        (image, error, imageURL, originalData) in
-                        guard error == nil else {
-                            print("缓存图片出错! 图片地址为: \(imageURL?.absoluteString)")
-                            dispatch_group_leave(group)
-                            return
-                        }
-                        KingfisherManager.sharedManager.cache.storeImage(image!, forKey: imageURL!.absoluteString, toDisk: true) {
-                            dispatch_group_leave(group)
-                        }
-                    }
-                }
-            }
-        }
-        dispatch_group_notify(group, dispatch_get_main_queue()) {
             completion(statuses: statuses)
         }
     }
-    
-//    private class func testKingfisherGif() {
-//        let URLs: [NSURL] = [NSURL(string: "http://ww3.sinaimg.cn/thumbnail/62037b5agw1f0vw2yxnqxg209v0587wm.gif")!]
-//        for thumbnailURL in URLs {
-//            KingfisherManager.sharedManager.downloader.downloadImageWithURL(thumbnailURL, progressBlock: nil) {
-//                (image, error, imageURL, originalData) in
-//                guard error == nil else {
-//                    print("缓存图片出错! 图片地址为: \(imageURL?.absoluteString)")
-//                    return
-//                }
-//            }
-//        }
-//    }
+
 }

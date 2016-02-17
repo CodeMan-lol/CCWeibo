@@ -19,8 +19,12 @@ class ImageBrowserCell: UICollectionViewCell {
             (image, error, cacheType, imageURL) in
             self.imageView.frame.size = image!.size
             self.layoutImageView()
+            self.layoutIfNeeded()
         }
         }
+    }
+    func close() {
+        NSNotificationCenter.defaultCenter().postNotificationName(ImageBrowserNotifications.TapToClose, object: nil)
     }
     private func layoutImageView() {
         let aspectRatio = imageView.bounds.width / imageView.bounds.height
@@ -42,6 +46,8 @@ class ImageBrowserCell: UICollectionViewCell {
         imageScrollView.delegate = self
         imageScrollView.maximumZoomScale = 2
         imageScrollView.minimumZoomScale = 1
+        let tap = UITapGestureRecognizer(target: self, action: "close")
+        imageScrollView.addGestureRecognizer(tap)
         }
     }
     lazy var imageView: UIImageView = UIImageView()
@@ -52,6 +58,7 @@ class ImageBrowserCell: UICollectionViewCell {
         
         imageView.transform = CGAffineTransformIdentity
     }
+
     
 }
 

@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 private let TimeLineReuseId = "TimeLineCell"
 private let RetweetTimeLineReuseId = "RetweetTimeLineCell"
 class HomeTableViewController: BaseTableViewController {
     private var statuses: [Status] = []
+    // 选中图片以及图片集合
     var selectedImageCell: PictureCollectionViewCell?
+    var selectedImageCollection: UICollectionView?
+    
     @IBAction func leftBarItemClick(sender: UIButton) {
         print(__FUNCTION__)
     }
@@ -40,7 +44,6 @@ class HomeTableViewController: BaseTableViewController {
             (view as! VisitorView).setupViews(true, iconName: "visitordiscover_feed_image_house", info: "关注一些人，回这里看看有什么惊喜")
         } else {
             setTitleBtn()
-            tableView.estimatedRowHeight = 200
 //          自动行高，如用手动行高，注释掉下一行代码
             tableView.rowHeight = UITableViewAutomaticDimension
             refreshControl = HomeRefreshControl(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
@@ -105,13 +108,16 @@ class HomeTableViewController: BaseTableViewController {
         let titleBtn = navigationItem.titleView as! TitleButton
         titleBtn.selected = !titleBtn.selected
     }
+    // MARK: - 点击图片查看大图
     func didClickImage(notification: NSNotification) {
         selectedImageCell = notification.userInfo?["selectedImageCell"] as? PictureCollectionViewCell
+        selectedImageCollection = notification.userInfo?["selectedImageCollection"] as? UICollectionView
         performSegueWithIdentifier("HomeModalToImageBrowser", sender: notification.userInfo)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        KingfisherManager.sharedManager.cache.clearMemoryCache()
     }
     
     private func setTitleBtn() {
@@ -156,12 +162,31 @@ extension HomeTableViewController {
             cell = tableView.dequeueReusableCellWithIdentifier(TimeLineReuseId, forIndexPath: indexPath) as? TimeLineCell
         }
         // 给定一个宽度，让cell先自行布局
-        cell!.bounds.size.width = tableView.bounds.width        
+        cell!.bounds.size.width = tableView.bounds.width
+        cell!.layoutIfNeeded()
         cell!.status = statuses[indexPath.row]
         if indexPath.row == statuses.count - 1 {
             pullUptoLoadMore()
         }
         return cell!
+    }
+    override func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        (cell as! TimeLineCell).cancelRetrieveTasks()
+    }
+    override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let picCount = statuses[indexPath.row].thumbnailURLs?[ApplicationInfo.PictureQualityMedium].count {
+            switch picCount {
+            case 2...4:
+                return 400
+            case 5...6:
+                return 500
+            case 7...9:
+                return 600
+            default:
+                return 300
+            }
+        }
+        return 200
     }
 //  如需手动设置行高，开启以下代码，注释掉自动行高调整
 //    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

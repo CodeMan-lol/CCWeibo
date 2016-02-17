@@ -36,7 +36,7 @@ class MainTabBarController: UITabBarController {
         return btn
         
     }()
-    //MARK: - 添加加号按钮
+    // MARK: - 添加加号按钮
     private func addComposeBtn() {
         let width = UIScreen.mainScreen().bounds.size.width / CGFloat(childViewControllers.count)
         composeBtn.translatesAutoresizingMaskIntoConstraints = false

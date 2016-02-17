@@ -83,14 +83,14 @@
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureCollectionViewCell" id="29G-DD-b2x" customClass="PictureCollectionViewCell" customModule="CCWeibo" customModuleProvider="target">
+                                                <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PictureCollectionViewCell" id="29G-DD-b2x" customClass="PictureCollectionViewCell" customModule="CCWeibo" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v9N-an-2uO">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v9N-an-2uO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             </imageView>
                                                         </subviews>
@@ -291,7 +291,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1r-kt-Wen">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e1r-kt-Wen">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             </imageView>
                                                         </subviews>
@@ -690,10 +690,12 @@
                                             <subviews>
                                                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NjX-6O-Bey">
                                                     <rect key="frame" x="0.0" y="0.0" width="576" height="438"/>
+                                                    <gestureRecognizers/>
                                                 </scrollView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="NjX-6O-Bey" firstAttribute="centerX" secondItem="kNl-eI-Szq" secondAttribute="centerX" id="APT-Hf-Gkd"/>
                                             <constraint firstItem="NjX-6O-Bey" firstAttribute="width" secondItem="kNl-eI-Szq" secondAttribute="width" id="F9S-rv-oge"/>
@@ -712,14 +714,8 @@
                                 <state key="normal" title="保存">
                                     <color key="titleColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="utp-QJ-G6u">
-                                <rect key="frame" x="550" y="550" width="30" height="30"/>
-                                <state key="normal" title="关闭">
-                                    <color key="titleColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
                                 <connections>
-                                    <action selector="close:" destination="4KY-dN-wWr" eventType="touchUpInside" id="iZR-yV-EFz"/>
+                                    <action selector="save:" destination="4KY-dN-wWr" eventType="touchUpInside" id="BmE-bh-Yqp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -730,8 +726,6 @@
                             <constraint firstItem="JQd-J3-64z" firstAttribute="centerY" secondItem="bcf-dG-La3" secondAttribute="centerY" id="Wn3-QQ-m9x"/>
                             <constraint firstItem="JQd-J3-64z" firstAttribute="height" secondItem="bcf-dG-La3" secondAttribute="height" id="aj7-af-ksM"/>
                             <constraint firstItem="lcc-u5-77h" firstAttribute="top" secondItem="hu8-ZF-zjh" secondAttribute="bottom" constant="20" id="m5U-MT-7VN"/>
-                            <constraint firstItem="lcc-u5-77h" firstAttribute="top" secondItem="utp-QJ-G6u" secondAttribute="bottom" constant="20" id="sC3-VH-DJT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="utp-QJ-G6u" secondAttribute="trailing" id="yIK-Kr-XN5"/>
                             <constraint firstAttribute="leadingMargin" secondItem="hu8-ZF-zjh" secondAttribute="leading" id="ydw-4O-FGd"/>
                         </constraints>
                     </view>

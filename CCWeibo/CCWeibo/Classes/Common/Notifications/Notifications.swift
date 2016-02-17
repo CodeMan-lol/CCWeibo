@@ -13,3 +13,6 @@ struct HomeNotifications {
     
     static let DidSelectCollectionImage = "Home.DidSelectCollectionImage"
 }
+struct ImageBrowserNotifications {
+    static let TapToClose = "ImageBrowser.TapToClose"
+}

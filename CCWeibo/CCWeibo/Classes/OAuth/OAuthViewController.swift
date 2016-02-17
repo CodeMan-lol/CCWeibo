@@ -38,6 +38,7 @@ class OAuthViewController: UIViewController {
             guard response.result.error == nil, let data = response.result.value else {
                 let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 hud.labelText = "网络出错! 请重试"
+                hud.color = UIColor.whiteColor()
                 DelayUtil.delay(3) {
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
                     self.dismissViewControllerAnimated(true, completion: nil)
@@ -66,6 +67,7 @@ class OAuthViewController: UIViewController {
             guard response.result.error == nil, let data = response.result.value else {
                 let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 hud.labelText = "网络出错! 请重试"
+                hud.color = UIColor.whiteColor()
                 DelayUtil.delay(3) {
                     MBProgressHUD.hideHUDForView(self.view, animated: true)
                     self.dismissViewControllerAnimated(true, completion: nil)
@@ -102,6 +104,7 @@ extension OAuthViewController: UIWebViewDelegate {
     func webViewDidStartLoad(webView: UIWebView) {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.labelText = "正在加载..."
+        hud.color = UIColor.whiteColor()
     }
     func webViewDidFinishLoad(webView: UIWebView) {
         MBProgressHUD.hideHUDForView(self.view, animated: true)

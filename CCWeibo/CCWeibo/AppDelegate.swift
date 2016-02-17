@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,6 +43,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
 
+    func applicationDidEnterBackground(application: UIApplication) {
+        KingfisherManager.sharedManager.cache.clearMemoryCache()
+    }
 
 }
 

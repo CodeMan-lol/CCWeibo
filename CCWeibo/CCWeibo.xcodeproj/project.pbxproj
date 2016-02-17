@@ -22,7 +22,7 @@
 		C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0D1C67802C0043C276 /* UserInfo.swift */; };
 		C9888F101C678A440043C276 /* DelayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0F1C678A440043C276 /* DelayUtil.swift */; };
 		C9888F131C6799F50043C276 /* NewFeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F121C6799F50043C276 /* NewFeatureViewController.swift */; };
-		C98AB0D71C64408B0021387E /* HomeNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D61C64408B0021387E /* HomeNotifications.swift */; };
+		C98AB0D71C64408B0021387E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D61C64408B0021387E /* Notifications.swift */; };
 		C98AB0DA1C644F760021387E /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98AB0D91C644F760021387E /* QRCodeViewController.swift */; };
 		C98DA5AD1C6E150000A60886 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98DA5AC1C6E150000A60886 /* UILabel+Extension.swift */; };
 		C98DA5AF1C6E152800A60886 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98DA5AE1C6E152800A60886 /* UIButton+Extension.swift */; };
@@ -99,7 +99,7 @@
 		C9888F0D1C67802C0043C276 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C9888F0F1C678A440043C276 /* DelayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayUtil.swift; sourceTree = "<group>"; };
 		C9888F121C6799F50043C276 /* NewFeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureViewController.swift; sourceTree = "<group>"; };
-		C98AB0D61C64408B0021387E /* HomeNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNotifications.swift; sourceTree = "<group>"; };
+		C98AB0D61C64408B0021387E /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		C98AB0D91C644F760021387E /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		C98DA5AC1C6E150000A60886 /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		C98DA5AE1C6E152800A60886 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		C98AB0D51C6440740021387E /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				C98AB0D61C64408B0021387E /* HomeNotifications.swift */,
+				C98AB0D61C64408B0021387E /* Notifications.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -715,7 +715,7 @@
 				C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */,
 				C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */,
 				C9099C051C62DF4C00E7A630 /* TitleButton.swift in Sources */,
-				C98AB0D71C64408B0021387E /* HomeNotifications.swift in Sources */,
+				C98AB0D71C64408B0021387E /* Notifications.swift in Sources */,
 				C98DA5AF1C6E152800A60886 /* UIButton+Extension.swift in Sources */,
 				C9E11DB11C73021100F6DA41 /* MagicMoveTransion.swift in Sources */,
 				C9E11DB41C73082100F6DA41 /* MagicMoveSegue.swift in Sources */,

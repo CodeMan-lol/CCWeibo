@@ -28,6 +28,19 @@ class TimeLineCell: UITableViewCell {
     @IBOutlet weak var picListHeightCons: NSLayoutConstraint!
     @IBOutlet weak var picListBottomCons: NSLayoutConstraint!
     
+    private var retrieveImageTasks: [RetrieveImageTask] = []
+    
+    func cancelRetrieveTasks() {
+        for task in retrieveImageTasks {
+            task.cancel()
+        }
+        retrieveImageTasks.removeAll()
+        if let URLs = status?.thumbnailURLs?[ApplicationInfo.PictureQualityMedium] {
+            for URL in URLs {
+                KingfisherManager.sharedManager.cache.removeImageForKey(URL.absoluteString, fromDisk: false, completionHandler: nil)
+            }
+        }
+    }
     
     // 图片列表中图片之间的间隙
     let thumbnailMargin: CGFloat = 8
@@ -35,7 +48,9 @@ class TimeLineCell: UITableViewCell {
     
     var status: Status? {
         didSet {
-        setupUI()
+        if status != nil {
+            setupUI()
+        }
         }
     }
     
@@ -49,7 +64,6 @@ class TimeLineCell: UITableViewCell {
     }
     /// 设置单元格
     func setupUI() {
-        self.layoutIfNeeded()
         nameLabel.text = status?.user?.name
         timeLabel.text = status?.createTimeFoTimeLabel
         sourceLabel.text = "来自 \(status!.source!)"
@@ -90,7 +104,7 @@ class TimeLineCell: UITableViewCell {
         var thumbnailHeight: CGFloat {
             return thumbnailWidth
         }
-        guard let picURLs = status?.thumbnailURLs?[ApplicationInfo.PictureQuality] else {
+        guard let picURLs = status?.thumbnailURLs?[ApplicationInfo.PictureQualityMedium] else {
             picListHeightCons.constant = 0
             picListBottomCons.constant = 0
             return nil
@@ -132,29 +146,46 @@ class TimeLineCell: UITableViewCell {
 extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return status?.thumbnailURLs?[ApplicationInfo.PictureQuality].count ?? 0
+        return status?.thumbnailURLs?[ApplicationInfo.PictureQualityMedium].count ?? 0
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PictureCollectionViewCell", forIndexPath: indexPath) as! PictureCollectionViewCell
-        cell.pictureURL = self.status?.thumbnailURLs?[ApplicationInfo.PictureQuality][indexPath.row]
+        var imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
+        if imageURL.absoluteString.hasSuffix(".gif") {
+            imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityLow][indexPath.row]
+        }
+        let task = cell.setImage(imageURL)
+        retrieveImageTasks.append(task)
         return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! PictureCollectionViewCell
-        selectedCell.imageView.contentMode = .ScaleToFill
-        let notification = NSNotification(name: HomeNotifications.DidSelectCollectionImage, object: nil, userInfo: ["imageURLs": (status?.thumbnailURLs![ApplicationInfo.PictureQuality])!, "currentIndex": indexPath.row, "selectedImageCell": selectedCell])
-        NSNotificationCenter.defaultCenter().postNotification(notification)
+        let selectedCell = collectionView.cellForItemAtIndexPath(indexPath) as! PictureCollectionViewCell        
+        let userInfo = [
+            "imageURLs": (status?.thumbnailURLs![ApplicationInfo.PictureQualityMedium])!,
+            "currentIndex": indexPath.row,
+            "selectedImageCell": selectedCell,
+            "selectedImageCollection": collectionView
+        ]
+        let imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
+        KingfisherManager.sharedManager.retrieveImageWithURL(imageURL, optionsInfo: nil, progressBlock: { (receivedSize, totalSize) in
+            selectedCell.imageView.kf_indicator?.startAnimating()
+            }) { (image, error, cacheType, imageURL) in
+                let notification = NSNotification(name: HomeNotifications.DidSelectCollectionImage, object: nil, userInfo: userInfo)
+                selectedCell.imageView.kf_indicator?.stopAnimating()
+                NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
     }
 }
 
 // MARK: - 图片集合单元格
 class PictureCollectionViewCell: UICollectionViewCell {
-    var pictureURL: NSURL? {
-        didSet {
-            imageView.kf_setImageWithURL(pictureURL!)
-        }
-    }
+    
     @IBOutlet weak var imageView: UIImageView!
+    
+    func setImage(imageURL: NSURL) -> RetrieveImageTask {
+        imageView.kf_showIndicatorWhenLoading = true
+        return imageView.kf_setImageWithURL(imageURL)
+    }
 }
 
 
