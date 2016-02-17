@@ -50,6 +50,7 @@
 		C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA60211C670DD000A9F999 /* String+FilePath.swift */; };
 		C9E11DB11C73021100F6DA41 /* MagicMoveTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */; };
 		C9E11DB41C73082100F6DA41 /* MagicMoveSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E11DB31C73082100F6DA41 /* MagicMoveSegue.swift */; };
+		C9E11DB61C731AF300F6DA41 /* MagicMovePopTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E11DB51C731AF300F6DA41 /* MagicMovePopTransion.swift */; };
 		C9E3B6E91C6A2E4500D1E98A /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E3B6E81C6A2E4500D1E98A /* Profile.storyboard */; };
 		C9E3B6EB1C6A2E4F00D1E98A /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9E3B6EA1C6A2E4F00D1E98A /* Discover.storyboard */; };
 		C9E3B6EE1C6B2B4400D1E98A /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E3B6ED1C6B2B4400D1E98A /* Status.swift */; };
@@ -132,6 +133,7 @@
 		C9CA60211C670DD000A9F999 /* String+FilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FilePath.swift"; sourceTree = "<group>"; };
 		C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicMoveTransion.swift; sourceTree = "<group>"; };
 		C9E11DB31C73082100F6DA41 /* MagicMoveSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicMoveSegue.swift; sourceTree = "<group>"; };
+		C9E11DB51C731AF300F6DA41 /* MagicMovePopTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicMovePopTransion.swift; sourceTree = "<group>"; };
 		C9E3B6E81C6A2E4500D1E98A /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		C9E3B6EA1C6A2E4F00D1E98A /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		C9E3B6ED1C6B2B4400D1E98A /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		C998F6C11C7177B300B900F7 /* ImageBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				C9E11DB51C731AF300F6DA41 /* MagicMovePopTransion.swift */,
 				C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */,
 				C998F6C21C7178CB00B900F7 /* ImageBrowserViewController.swift */,
 				C998F6C41C717C2700B900F7 /* ImageBrowserCell.swift */,
@@ -693,6 +696,7 @@
 				C9B3E1AC1C60EFB60006D44B /* ProfileTableViewController.swift in Sources */,
 				C9F9C7601C6616BF001E43D1 /* WBKeys.swift in Sources */,
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
+				C9E11DB61C731AF300F6DA41 /* MagicMovePopTransion.swift in Sources */,
 				C9888F131C6799F50043C276 /* NewFeatureViewController.swift in Sources */,
 				C9E3B6F01C6B38D000D1E98A /* User.swift in Sources */,
 				C998F6C31C7178CB00B900F7 /* ImageBrowserViewController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class MagicMoveTransion: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
-        return 0.5
+        return 0.6
     }
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         let mainVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! MainTabBarController
@@ -37,10 +37,10 @@ class MagicMoveTransion: NSObject, UIViewControllerAnimatedTransitioning {
         toCell.layoutIfNeeded()
         toCell.imageView.hidden = true
         let toFrame = toCell.convertRect(toCell.imageView.frame, fromView: toCell.imageScrollView)
-        
-        UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 300, initialSpringVelocity: 30, options: [], animations: {
+        UIView.animateWithDuration(transitionDuration(transitionContext), delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1, options: [], animations: {
             snapshotView.frame = toFrame
             toVC.view.alpha = 1
+
         }) { (finished: Bool) in
             fromVC.selectedImageCell!.imageView.hidden = false
             toCell.imageView.hidden = false

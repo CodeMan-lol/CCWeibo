@@ -20,5 +20,7 @@ extension MagicMoveSegue: UIViewControllerTransitioningDelegate {
         NSNotificationCenter.defaultCenter().postNotificationName(HomeNotifications.TitleViewWillShow, object: self)
         return MagicMoveTransion()
     }
-
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return MagicMovePopTransion()
+    }
 }
