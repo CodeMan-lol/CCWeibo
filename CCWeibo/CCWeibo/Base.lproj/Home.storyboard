@@ -194,12 +194,14 @@
                                 </variation>
                                 <connections>
                                     <outlet property="avatarView" destination="lKi-gG-Tac" id="cKC-kh-gOg"/>
+                                    <outlet property="commentBtn" destination="XUF-F5-fsX" id="see-Ob-BLH"/>
                                     <outlet property="contentLabel" destination="Cop-V2-xVL" id="c8p-vn-C2C"/>
                                     <outlet property="footerBar" destination="EnQ-9N-QQp" id="tde-XW-lxZ"/>
                                     <outlet property="nameLabel" destination="3DK-hp-XYh" id="nh2-Dx-mSG"/>
                                     <outlet property="picListBottomCons" destination="7oH-pM-9FO" id="eFb-DO-JDK"/>
                                     <outlet property="picListHeightCons" destination="DDX-cT-a2x" id="06Y-wj-PXV"/>
                                     <outlet property="picturesCollectionView" destination="GXK-CX-WA7" id="rgU-gI-vVh"/>
+                                    <outlet property="repostBtn" destination="g0K-Ow-GBG" id="JnS-rY-LRa"/>
                                     <outlet property="sourceLabel" destination="IA7-9L-h14" id="7dc-aw-Qk2"/>
                                     <outlet property="timeLabel" destination="LDg-oO-01u" id="bHd-JZ-h79"/>
                                     <outlet property="verifiedIconView" destination="n2z-UK-b0E" id="Mec-az-NTJ"/>
@@ -406,12 +408,14 @@
                                 </variation>
                                 <connections>
                                     <outlet property="avatarView" destination="Ig2-ZT-GJE" id="Rp3-6G-GBK"/>
+                                    <outlet property="commentBtn" destination="6aX-7y-miz" id="ORe-v8-LKu"/>
                                     <outlet property="contentLabel" destination="peB-uB-Vvk" id="MHZ-yz-lbn"/>
                                     <outlet property="footerBar" destination="adn-X2-SEq" id="294-ze-Go6"/>
                                     <outlet property="nameLabel" destination="L6a-GP-AwU" id="Bet-P4-4eQ"/>
                                     <outlet property="picListBottomCons" destination="l60-7m-pz4" id="LZ4-fy-4ZU"/>
                                     <outlet property="picListHeightCons" destination="9kT-H0-QGu" id="J3e-os-b0C"/>
                                     <outlet property="picturesCollectionView" destination="94Q-Fr-pGI" id="rbp-CK-ghQ"/>
+                                    <outlet property="repostBtn" destination="0Mi-oP-hZ4" id="WQB-iQ-C1y"/>
                                     <outlet property="retweetContentLabel" destination="ePA-fX-wcO" id="kXf-DQ-icm"/>
                                     <outlet property="sourceLabel" destination="mfu-TU-hBt" id="Yi7-RI-8ES"/>
                                     <outlet property="timeLabel" destination="gQh-dK-CRX" id="hrI-Br-y3S"/>
@@ -710,7 +714,11 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu8-ZF-zjh">
-                                <rect key="frame" x="20" y="550" width="30" height="30"/>
+                                <rect key="frame" x="20" y="550" width="53" height="30"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="F0f-ug-v7r"/>
+                                </constraints>
                                 <state key="normal" title="保存">
                                     <color key="titleColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -731,6 +739,7 @@
                     </view>
                     <connections>
                         <outlet property="imageCollectionView" destination="JQd-J3-64z" id="oky-m2-Q1F"/>
+                        <outlet property="saveBtn" destination="hu8-ZF-zjh" id="vIe-3y-Muw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tGU-qA-3Sv" userLabel="First Responder" sceneMemberID="firstResponder"/>

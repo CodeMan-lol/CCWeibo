@@ -24,6 +24,8 @@ class TimeLineCell: UITableViewCell {
         picturesCollectionView.dataSource = self
         }
     }
+    @IBOutlet weak var repostBtn: UIButton!
+    @IBOutlet weak var commentBtn: UIButton!
     @IBOutlet weak var footerBar: UIImageView!
     @IBOutlet weak var picListHeightCons: NSLayoutConstraint!
     @IBOutlet weak var picListBottomCons: NSLayoutConstraint!
@@ -35,11 +37,7 @@ class TimeLineCell: UITableViewCell {
             task.cancel()
         }
         retrieveImageTasks.removeAll()
-        if let URLs = status?.thumbnailURLs?[ApplicationInfo.PictureQualityMedium] {
-            for URL in URLs {
-                KingfisherManager.sharedManager.cache.removeImageForKey(URL.absoluteString, fromDisk: false, completionHandler: nil)
-            }
-        }
+        KingfisherManager.sharedManager.cache.clearDiskCache()
     }
     
     // 图片列表中图片之间的间隙
@@ -79,6 +77,12 @@ class TimeLineCell: UITableViewCell {
         // 会员图标设置
         vipIconView.image = status?.user?.mbrankIcon
         nameLabel.textColor = vipIconView.image == nil ? UIColor.darkGrayColor() : UIColor.orangeColor()
+        if status!.comments_count > 0 {
+            commentBtn.setTitle(" \(status!.comments_count)", forState: .Normal)
+        }
+        if status!.reposts_count > 0 {
+            repostBtn.setTitle(" \(status!.reposts_count)", forState: .Normal)
+        }
         if let itemSize = resizePictureCollectionView() {
             self.layoutIfNeeded()
             let layout = (picturesCollectionView.collectionViewLayout as! UICollectionViewFlowLayout)
@@ -140,6 +144,8 @@ class TimeLineCell: UITableViewCell {
         return footerBar.frame.maxY
     }
     
+
+    
     
 }
 // MARK: - 图片集合 DateSouce和Delegate
@@ -153,6 +159,9 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
         var imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
         if imageURL.absoluteString.hasSuffix(".gif") {
             imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityLow][indexPath.row]
+            cell.gifLabel.hidden = false
+        } else {
+            cell.gifLabel.hidden = true
         }
         let task = cell.setImage(imageURL)
         retrieveImageTasks.append(task)
@@ -172,6 +181,7 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
             }) { (image, error, cacheType, imageURL) in
                 let notification = NSNotification(name: HomeNotifications.DidSelectCollectionImage, object: nil, userInfo: userInfo)
                 selectedCell.imageView.kf_indicator?.stopAnimating()
+                selectedCell.imageView.kf_indicator?.hidden = true
                 NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
@@ -179,8 +189,23 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
 // MARK: - 图片集合单元格
 class PictureCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var imageView: UIImageView!
+    private var gifLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = UIColor.orangeColor()
+        label.textColor = UIColor.whiteColor()
+        label.text = "GIF"
+        label.sizeToFit()
+        label.frame.origin = CGPointZero
+        label.font = UIFont.systemFontOfSize(12)
+        label.textAlignment = .Center
+        label.hidden = true
+        return label
+    }()
+    @IBOutlet weak var imageView: UIImageView! {
+        didSet {
+        imageView.addSubview(gifLabel)
+        }
+    }
     
     func setImage(imageURL: NSURL) -> RetrieveImageTask {
         imageView.kf_showIndicatorWhenLoading = true

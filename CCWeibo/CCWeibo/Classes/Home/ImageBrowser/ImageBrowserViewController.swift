@@ -25,6 +25,11 @@ class ImageBrowserViewController: UIViewController {
         imageCollectionView.delegate = self
         }
     }
+    @IBOutlet weak var saveBtn: UIButton! {
+        didSet {
+            saveBtn.layer.cornerRadius = 5
+        }
+    }
     func close() {
         dismissViewControllerAnimated(true, completion: nil)
     }

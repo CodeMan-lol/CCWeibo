@@ -19,7 +19,6 @@ class ImageBrowserCell: UICollectionViewCell {
             (image, error, cacheType, imageURL) in
             self.imageView.frame.size = image!.size
             self.layoutImageView()
-            self.layoutIfNeeded()
         }
         }
     }
@@ -51,6 +50,7 @@ class ImageBrowserCell: UICollectionViewCell {
         }
     }
     lazy var imageView: UIImageView = UIImageView()
+
     private func reset() {
         imageScrollView.contentInset = UIEdgeInsetsZero
         imageScrollView.contentSize = CGSizeZero

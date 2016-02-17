@@ -28,6 +28,8 @@ class Status: NSObject {
         source = subStr.substringToIndex(endIndex!)
         }
     }
+    var reposts_count = 0
+    var comments_count = 0
     var pic_urls: [[String: AnyObject]] = [] {
         didSet {
         if pic_urls.count > 0 {
