@@ -9,11 +9,14 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+    
+    var newPostView: NewPostTabView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        newPostView = NewPostTabView(frame: view.bounds)
+        newPostView!.alpha = 0
+        view.addSubview(newPostView!)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -33,6 +36,7 @@ class MainTabBarController: UITabBarController {
         //背景图
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: .Normal)
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: .Highlighted)
+        btn.addTarget(self, action: "sendNewPost:", forControlEvents: .TouchUpInside)
         return btn
         
     }()
@@ -48,14 +52,13 @@ class MainTabBarController: UITabBarController {
         NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint, widthConstraint, heightConstraint])
         view.layoutIfNeeded()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func sendNewPost(sender: UIButton) {
+        UIView.animateWithDuration(0.5) {
+            self.newPostView?.closeBtn.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
+            self.newPostView?.alpha = 1
+        }
+        newPostView?.isReprensing = true
     }
-    */
 
 }

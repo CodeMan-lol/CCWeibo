@@ -114,7 +114,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0K-Ow-GBG">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="转发" image="timeline_icon_retweet" backgroundImage="timeline_card_bottom_background">
+                                                    <state key="normal" title=" 转发" image="timeline_icon_retweet" backgroundImage="timeline_card_bottom_background">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="timeline_card_bottom_line_highlighted"/>
@@ -122,7 +122,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUF-F5-fsX">
                                                     <rect key="frame" x="200" y="0.0" width="200" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="评论" image="timeline_icon_comment" backgroundImage="timeline_card_bottom_background">
+                                                    <state key="normal" title=" 评论" image="timeline_icon_comment" backgroundImage="timeline_card_bottom_background">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="timeline_card_bottom_line_highlighted"/>
@@ -130,7 +130,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUl-4x-u5O">
                                                     <rect key="frame" x="400" y="0.0" width="200" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="赞" image="timeline_icon_unlike" backgroundImage="timeline_card_bottom_background">
+                                                    <state key="normal" title=" 赞" image="timeline_icon_unlike" backgroundImage="timeline_card_bottom_background">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" image="timeline_icon_like" backgroundImage="timeline_card_bottom_line_highlighted"/>
@@ -317,7 +317,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Mi-oP-hZ4">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="转发" image="timeline_icon_retweet" backgroundImage="timeline_card_bottom_background">
+                                                    <state key="normal" title=" 转发" image="timeline_icon_retweet" backgroundImage="timeline_card_bottom_background">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="timeline_card_bottom_line_highlighted"/>
@@ -325,7 +325,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6aX-7y-miz">
                                                     <rect key="frame" x="200" y="0.0" width="200" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="评论" image="timeline_icon_comment" backgroundImage="timeline_card_bottom_background">
+                                                    <state key="normal" title=" 评论" image="timeline_icon_comment" backgroundImage="timeline_card_bottom_background">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" backgroundImage="timeline_card_bottom_line_highlighted"/>
@@ -333,7 +333,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVg-TB-2qX">
                                                     <rect key="frame" x="400" y="0.0" width="200" height="40"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="赞" image="timeline_icon_unlike" backgroundImage="timeline_card_bottom_background">
+                                                    <state key="normal" title=" 赞" image="timeline_icon_unlike" backgroundImage="timeline_card_bottom_background">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted" image="timeline_icon_like" backgroundImage="timeline_card_bottom_line_highlighted"/>

@@ -79,9 +79,14 @@ class TimeLineCell: UITableViewCell {
         nameLabel.textColor = vipIconView.image == nil ? UIColor.darkGrayColor() : UIColor.orangeColor()
         if status!.comments_count > 0 {
             commentBtn.setTitle(" \(status!.comments_count)", forState: .Normal)
+        } else {
+            commentBtn.setTitle(" 评论", forState: .Normal)
         }
         if status!.reposts_count > 0 {
             repostBtn.setTitle(" \(status!.reposts_count)", forState: .Normal)
+        } else {
+            repostBtn.setTitle(" 转发", forState: .Normal)
+
         }
         if let itemSize = resizePictureCollectionView() {
             self.layoutIfNeeded()

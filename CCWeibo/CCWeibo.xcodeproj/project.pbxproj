@@ -18,6 +18,8 @@
 		C9099C0C1C63652200E7A630 /* PopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0B1C63652200E7A630 /* PopoverSegue.swift */; };
 		C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */; };
 		C92047C11C6C2990005E5AA5 /* NSDate+WeiboDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */; };
+		C93CB92A1C75E95600CF7EDC /* NewPostTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */; };
+		C93CB92C1C75EF8100CF7EDC /* NewPostTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93CB92B1C75EF8100CF7EDC /* NewPostTabView.swift */; };
 		C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */; };
 		C9888F0E1C67802C0043C276 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0D1C67802C0043C276 /* UserInfo.swift */; };
 		C9888F101C678A440043C276 /* DelayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9888F0F1C678A440043C276 /* DelayUtil.swift */; };
@@ -95,6 +97,8 @@
 		C9099C0B1C63652200E7A630 /* PopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverSegue.swift; sourceTree = "<group>"; };
 		C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
 		C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+WeiboDate.swift"; sourceTree = "<group>"; };
+		C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPostTabView.xib; sourceTree = "<group>"; };
+		C93CB92B1C75EF8100CF7EDC /* NewPostTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTabView.swift; sourceTree = "<group>"; };
 		C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRouter.swift; sourceTree = "<group>"; };
 		C9888F0D1C67802C0043C276 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		C9888F0F1C678A440043C276 /* DelayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelayUtil.swift; sourceTree = "<group>"; };
@@ -207,6 +211,15 @@
 			path = Popover;
 			sourceTree = "<group>";
 		};
+		C93CB9281C75E94200CF7EDC /* NewPost */ = {
+			isa = PBXGroup;
+			children = (
+				C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */,
+				C93CB92B1C75EF8100CF7EDC /* NewPostTabView.swift */,
+			);
+			path = NewPost;
+			sourceTree = "<group>";
+		};
 		C9888F111C67996A0043C276 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +315,7 @@
 		C9B3E19C1C60DBB70006D44B /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C93CB9281C75E94200CF7EDC /* NewPost */,
 				C9888F111C67996A0043C276 /* Welcome */,
 				C9F9C75C1C661674001E43D1 /* OAuth */,
 				C9099BFF1C61C6F100E7A630 /* Common */,
@@ -545,6 +559,7 @@
 				C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */,
 				C9B3E1AF1C618C970006D44B /* Home.storyboard in Resources */,
 				C9E3B6EB1C6A2E4F00D1E98A /* Discover.storyboard in Resources */,
+				C93CB92A1C75E95600CF7EDC /* NewPostTabView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +731,7 @@
 				C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */,
 				C9099C051C62DF4C00E7A630 /* TitleButton.swift in Sources */,
 				C98AB0D71C64408B0021387E /* Notifications.swift in Sources */,
+				C93CB92C1C75EF8100CF7EDC /* NewPostTabView.swift in Sources */,
 				C98DA5AF1C6E152800A60886 /* UIButton+Extension.swift in Sources */,
 				C9E11DB11C73021100F6DA41 /* MagicMoveTransion.swift in Sources */,
 				C9E11DB41C73082100F6DA41 /* MagicMoveSegue.swift in Sources */,

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostTabView" customModule="CCWeibo" customModuleProvider="target">
+            <connections>
+                <outlet property="closeBtn" destination="ZPh-v1-x7I" id="o4i-rv-RXz"/>
+                <outlet property="newPostScrollView" destination="bSh-dh-I77" id="udk-aZ-MRx"/>
+                <outlet property="newPostTabBar" destination="Gxz-3X-Qd9" id="5eO-Ic-cBR"/>
+                <outlet property="returnCloseBar" destination="abE-I6-LBt" id="ocD-mg-07e"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="fCq-5P-0cP">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPM-SL-3gn">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qAi-vB-VrT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gxz-3X-Qd9">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_compose_below_background" translatesAutoresizingMaskIntoConstraints="NO" id="czX-mS-fd2">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                    </imageView>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_compose_background_icon_add" translatesAutoresizingMaskIntoConstraints="NO" id="ZPh-v1-x7I">
+                                        <rect key="frame" x="287" y="12" width="25" height="25"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="25" id="oQf-Bf-HJo"/>
+                                            <constraint firstAttribute="height" constant="25" id="pkv-g3-v09"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="DmG-Sp-qRW" appends="YES" id="dIz-lo-5fK"/>
+                                        </connections>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="abE-I6-LBt">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbQ-0q-Zio">
+                                                <rect key="frame" x="300" y="0.0" width="300" height="49"/>
+                                                <state key="normal" image="tabbar_compose_background_icon_close" backgroundImage="tabbar_compose_below_button"/>
+                                                <state key="highlighted" backgroundImage="tabbar_compose_below_button_highlighted"/>
+                                                <connections>
+                                                    <action selector="returnBarCloseClick:" destination="-1" eventType="touchUpInside" id="uZJ-pQ-4Ao"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XSi-nx-I3w">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="49"/>
+                                                <state key="normal" image="tabbar_compose_background_icon_return" backgroundImage="tabbar_compose_below_button"/>
+                                                <state key="highlighted" backgroundImage="tabbar_compose_below_button_highlighted"/>
+                                                <connections>
+                                                    <action selector="returnToFirstPage:" destination="-1" eventType="touchUpInside" id="qiW-lE-BLe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="XSi-nx-I3w" firstAttribute="centerY" secondItem="abE-I6-LBt" secondAttribute="centerY" id="BBn-Td-06h"/>
+                                            <constraint firstItem="vbQ-0q-Zio" firstAttribute="width" secondItem="abE-I6-LBt" secondAttribute="width" multiplier="0.5" id="U6v-y0-dMd"/>
+                                            <constraint firstItem="XSi-nx-I3w" firstAttribute="leading" secondItem="abE-I6-LBt" secondAttribute="leading" id="VCB-E7-QFR"/>
+                                            <constraint firstItem="vbQ-0q-Zio" firstAttribute="height" secondItem="abE-I6-LBt" secondAttribute="height" id="WCx-D8-fc2"/>
+                                            <constraint firstItem="XSi-nx-I3w" firstAttribute="height" secondItem="abE-I6-LBt" secondAttribute="height" id="jXd-7x-cYo"/>
+                                            <constraint firstAttribute="trailing" secondItem="vbQ-0q-Zio" secondAttribute="trailing" id="o0e-uL-HHO"/>
+                                            <constraint firstItem="vbQ-0q-Zio" firstAttribute="centerY" secondItem="abE-I6-LBt" secondAttribute="centerY" id="q6b-eJ-dh9"/>
+                                            <constraint firstItem="XSi-nx-I3w" firstAttribute="width" secondItem="abE-I6-LBt" secondAttribute="width" multiplier="0.5" id="qOq-Ln-fpi"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZPh-v1-x7I" firstAttribute="centerY" secondItem="Gxz-3X-Qd9" secondAttribute="centerY" id="0rw-jQ-bfT"/>
+                                    <constraint firstItem="ZPh-v1-x7I" firstAttribute="centerX" secondItem="Gxz-3X-Qd9" secondAttribute="centerX" id="2Fy-ip-Gth"/>
+                                    <constraint firstItem="czX-mS-fd2" firstAttribute="centerY" secondItem="Gxz-3X-Qd9" secondAttribute="centerY" id="2SB-qA-2uO"/>
+                                    <constraint firstAttribute="height" constant="49" id="8N7-PK-JxF"/>
+                                    <constraint firstItem="abE-I6-LBt" firstAttribute="height" secondItem="Gxz-3X-Qd9" secondAttribute="height" id="GMt-RA-ZOJ"/>
+                                    <constraint firstItem="abE-I6-LBt" firstAttribute="width" secondItem="Gxz-3X-Qd9" secondAttribute="width" id="Grb-pb-mfD"/>
+                                    <constraint firstItem="czX-mS-fd2" firstAttribute="width" secondItem="Gxz-3X-Qd9" secondAttribute="width" id="VMf-Hs-AVu"/>
+                                    <constraint firstItem="abE-I6-LBt" firstAttribute="centerY" secondItem="Gxz-3X-Qd9" secondAttribute="centerY" id="ZD9-Af-BjC"/>
+                                    <constraint firstItem="abE-I6-LBt" firstAttribute="centerX" secondItem="Gxz-3X-Qd9" secondAttribute="centerX" id="ZEi-wg-UCm"/>
+                                    <constraint firstItem="czX-mS-fd2" firstAttribute="height" secondItem="Gxz-3X-Qd9" secondAttribute="height" id="jef-qt-q1a"/>
+                                    <constraint firstItem="czX-mS-fd2" firstAttribute="centerX" secondItem="Gxz-3X-Qd9" secondAttribute="centerX" id="p4U-XF-hY7"/>
+                                </constraints>
+                            </view>
+                            <scrollView multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSh-dh-I77">
+                                <rect key="frame" x="0.0" y="180" width="600" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="240" id="JbE-ds-ANr"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Gxz-3X-Qd9" secondAttribute="bottom" id="KOR-d4-nP8"/>
+                            <constraint firstItem="Gxz-3X-Qd9" firstAttribute="centerX" secondItem="qAi-vB-VrT" secondAttribute="centerX" id="aaU-e1-NW8"/>
+                            <constraint firstItem="Gxz-3X-Qd9" firstAttribute="width" secondItem="qAi-vB-VrT" secondAttribute="width" id="bse-ik-6Uy"/>
+                            <constraint firstItem="bSh-dh-I77" firstAttribute="centerX" secondItem="qAi-vB-VrT" secondAttribute="centerX" id="nUa-de-N4P"/>
+                            <constraint firstItem="bSh-dh-I77" firstAttribute="width" secondItem="qAi-vB-VrT" secondAttribute="width" id="sur-Di-Rgl"/>
+                            <constraint firstItem="bSh-dh-I77" firstAttribute="centerY" secondItem="qAi-vB-VrT" secondAttribute="centerY" id="vOU-7Y-fsx"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="dark"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="bPM-SL-3gn" firstAttribute="height" secondItem="fCq-5P-0cP" secondAttribute="height" id="hcj-Yd-9o8"/>
+                <constraint firstItem="bPM-SL-3gn" firstAttribute="centerY" secondItem="fCq-5P-0cP" secondAttribute="centerY" id="p24-Mc-ilA"/>
+                <constraint firstItem="bPM-SL-3gn" firstAttribute="width" secondItem="fCq-5P-0cP" secondAttribute="width" id="uQo-c4-Xfa"/>
+                <constraint firstItem="bPM-SL-3gn" firstAttribute="centerX" secondItem="fCq-5P-0cP" secondAttribute="centerX" id="yh4-gM-d7N"/>
+            </constraints>
+            <point key="canvasLocation" x="487" y="344"/>
+        </view>
+        <tapGestureRecognizer id="DmG-Sp-qRW">
+            <connections>
+                <action selector="tapToClose:" destination="-1" id="UnQ-Vw-Dyx"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="tabbar_compose_background_icon_add" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_close" width="25" height="25"/>
+        <image name="tabbar_compose_background_icon_return" width="25" height="25"/>
+        <image name="tabbar_compose_below_background" width="15" height="46"/>
+        <image name="tabbar_compose_below_button" width="22" height="44"/>
+        <image name="tabbar_compose_below_button_highlighted" width="21" height="44"/>
+    </resources>
+</document>

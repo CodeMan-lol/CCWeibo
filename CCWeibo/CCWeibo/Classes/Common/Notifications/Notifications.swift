@@ -16,3 +16,6 @@ struct HomeNotifications {
 struct ImageBrowserNotifications {
     static let TapToClose = "ImageBrowser.TapToClose"
 }
+struct NewPostNotifications {
+    static let NewPostTextItemDidClick = "NewPostTab.NewPostTextItem"
+}

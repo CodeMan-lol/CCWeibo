@@ -17,7 +17,6 @@ class MagicMoveSegue: UIStoryboardSegue {
 extension MagicMoveSegue: UIViewControllerTransitioningDelegate {
 
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        NSNotificationCenter.defaultCenter().postNotificationName(HomeNotifications.TitleViewWillShow, object: self)
         return MagicMoveTransion()
     }
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
