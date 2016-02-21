@@ -15,16 +15,24 @@ class NewPostTabView: UIView, ScrollTabViewDelegate {
         didSet {
         let scrollWidth = UIScreen.mainScreen().bounds.width
         let rectOrigin = CGRect(x: CGFloat(pageNum) * scrollWidth, y: 0, width: scrollWidth, height: self.newPostScrollView.frame.height)
-        self.newPostScrollView.scrollRectToVisible(rectOrigin, animated: true)
+        self.newPostScrollView.scrollRectToVisible(rectOrigin, animated: isReprensing)
         UIView.animateWithDuration(0.3) {
             self.returnCloseBar.alpha = self.pageNum == 0 ? 0 : 1
         }
         }
     }
-    // 动画属性，控制是展现还是消失
+    // 动画属性，控制view展现和消失，以及相应的弹性动画
     var isReprensing: Bool = true {
         didSet {
         animateItems()
+        UIView.animateWithDuration(0.5, animations: {
+            self.alpha = self.isReprensing ? 1 : 0
+            self.closeBtn.transform = self.isReprensing ? CGAffineTransformMakeRotation(CGFloat(M_PI_4)) : CGAffineTransformIdentity
+        }) { _ in
+            if !self.isReprensing {
+                self.pageNum = 0
+            }
+        }
         }
     }
 
@@ -32,18 +40,10 @@ class NewPostTabView: UIView, ScrollTabViewDelegate {
     @IBOutlet weak var returnCloseBar: UIView!
     @IBAction func tapToClose(sender: UITapGestureRecognizer) {
         self.isReprensing = false
-        UIView.animateWithDuration(0.5) {
-            self.closeBtn.transform = CGAffineTransformIdentity
-            self.alpha = 0
-        }
+
     }
     @IBAction func returnBarCloseClick(sender: UIButton) {
         self.isReprensing = false
-        UIView.animateWithDuration(0.5, animations: {
-            self.alpha = 0
-            }) { _ in
-            self.pageNum = 0
-        }
     }
     @IBAction func returnToFirstPage(sender: UIButton) {
         pageNum = 0
@@ -54,7 +54,7 @@ class NewPostTabView: UIView, ScrollTabViewDelegate {
         super.init(frame: frame)
         setupXib()
     }
-    //核心设置代码
+    // 设置xib视图
     func setupXib() {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: "NewPostTabView", bundle: bundle)
@@ -63,6 +63,7 @@ class NewPostTabView: UIView, ScrollTabViewDelegate {
         addSubview(view)
         setupUI()
     }
+    // 核心UI设置代码
     private func setupUI() {
         returnCloseBar.alpha = 0
         newPostScrollView.contentSize = CGSize(width: UIScreen.mainScreen().bounds.width * 2, height: newPostScrollView.frame.height)
@@ -115,22 +116,25 @@ class NewPostTabView: UIView, ScrollTabViewDelegate {
         newPostScrollView.addSubview(bookBtnView)
         bookBtnView.moveBottomOffScreen()
     }
+    // 列表选项点击方法
     func didClick(sender: ScrollTabView) {
         switch sender.infoLabel.text! {
         case "更多":
             pageNum = 1
-        case "文字": break
-        default: break
+        default:
+            isReprensing = false
+            NSNotificationCenter.defaultCenter().postNotificationName(NewPostNotifications.NewPostTextItemDidClick, object: nil)
         }
         
     }
-    func animateItems() {
+    // tab视图的弹性动画
+    private func animateItems() {
         let itemCount = newPostScrollView.subviews.count
         let viewArr = (pageNum == 0 ? newPostScrollView.subviews : newPostScrollView.subviews.reverse()).map {
             $0 as! ScrollTabView
         }
         for (index, view) in viewArr.enumerate() {
-            UIView.animateWithDuration(0.5, delay: 0.4/Double(itemCount) * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: [], animations: {
+            UIView.animateWithDuration(0.5, delay: 0.4/Double(itemCount) * Double(index), usingSpringWithDamping: 0.9, initialSpringVelocity: 20, options: [], animations: {
                 self.isReprensing ? view.moveUpToOrigin() : view.moveBottomOffScreen()
             }, completion: nil)
         }
@@ -141,6 +145,7 @@ class NewPostTabView: UIView, ScrollTabViewDelegate {
     }
     
 }
+// 列表选项视图
 class ScrollTabView: UIView {
     weak var delegate: ScrollTabViewDelegate?
     override init(frame: CGRect) {
@@ -193,12 +198,14 @@ class ScrollTabView: UIView {
                 self.transform = CGAffineTransformMakeScale(2, 2)
                 self.alpha = 0.1
             }) { _ in
+                self.delegate?.didClick(self)
                 self.transform = CGAffineTransformIdentity
                 self.alpha = 1
                 self.imageView.transform = CGAffineTransformIdentity
             }
+        } else {
+            delegate?.didClick(self)
         }
-        delegate?.didClick(self)
     }
     func moveBottomOffScreen() {
         self.center.y += UIScreen.mainScreen().bounds.height

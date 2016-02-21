@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9GX-Ir-7gE">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--新微博-->
+        <scene sceneID="lP2-kv-uan">
+            <objects>
+                <viewController id="XpT-nr-kj8" customClass="NewTextPostViewController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XXx-kh-UB9"/>
+                        <viewControllerLayoutGuide type="bottom" id="FEr-gJ-eNU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CXH-U1-fTN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WEX-n5-rwo">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享新鲜事..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtD-ey-rci">
+                                <rect key="frame" x="12" y="72" width="82.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CtD-ey-rci" firstAttribute="top" secondItem="XXx-kh-UB9" secondAttribute="bottom" constant="8" id="CCa-63-98B"/>
+                            <constraint firstItem="CtD-ey-rci" firstAttribute="leading" secondItem="CXH-U1-fTN" secondAttribute="leadingMargin" constant="-8" id="OST-9H-x5Y"/>
+                            <constraint firstItem="WEX-n5-rwo" firstAttribute="centerX" secondItem="CXH-U1-fTN" secondAttribute="centerX" id="Oo1-Ix-8HF"/>
+                            <constraint firstItem="WEX-n5-rwo" firstAttribute="width" secondItem="CXH-U1-fTN" secondAttribute="width" id="U8a-vN-X5r"/>
+                            <constraint firstItem="WEX-n5-rwo" firstAttribute="height" secondItem="CXH-U1-fTN" secondAttribute="height" id="YdG-Mj-xdI"/>
+                            <constraint firstItem="WEX-n5-rwo" firstAttribute="centerY" secondItem="CXH-U1-fTN" secondAttribute="centerY" id="jek-0v-eTQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="新微博" id="EhJ-R2-wCV">
+                        <barButtonItem key="leftBarButtonItem" title="关闭" id="zop-dp-GDU">
+                            <connections>
+                                <action selector="close:" destination="XpT-nr-kj8" id="4yU-Cn-CVr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="发送" id="Ija-o4-Dbw">
+                            <connections>
+                                <action selector="postNewWeibo:" destination="XpT-nr-kj8" id="01P-y9-t37"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="placeholderLabel" destination="CtD-ey-rci" id="Anc-aC-3Je"/>
+                        <outlet property="postBtn" destination="Ija-o4-Dbw" id="Gon-8a-gFI"/>
+                        <outlet property="textView" destination="WEX-n5-rwo" id="fug-SX-b3N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JBV-9P-rO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-112" y="817"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UhE-FA-anA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9GX-Ir-7gE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qst-xZ-vpd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="XpT-nr-kj8" kind="relationship" relationship="rootViewController" id="s0D-v8-Mwr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfF-IJ-ncE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-924" y="817"/>
+        </scene>
+    </scenes>
+</document>

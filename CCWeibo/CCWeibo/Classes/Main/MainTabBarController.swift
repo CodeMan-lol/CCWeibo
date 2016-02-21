@@ -17,6 +17,10 @@ class MainTabBarController: UITabBarController {
         newPostView = NewPostTabView(frame: view.bounds)
         newPostView!.alpha = 0
         view.addSubview(newPostView!)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newTextPost", name: NewPostNotifications.NewPostTextItemDidClick, object: nil)
+    }
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -30,10 +34,10 @@ class MainTabBarController: UITabBarController {
     
     private lazy var composeBtn: UIButton = {
         var btn = UIButton()
-        //前景图
+        // 前景图
         btn.setImage(UIImage(named: "tabbar_compose_icon_add"), forState: .Normal)
         btn.setImage(UIImage(named: "tabbar_compose_icon_add_highlighted"), forState: .Highlighted)
-        //背景图
+        // 背景图
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: .Normal)
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: .Highlighted)
         btn.addTarget(self, action: "sendNewPost:", forControlEvents: .TouchUpInside)
@@ -52,13 +56,13 @@ class MainTabBarController: UITabBarController {
         NSLayoutConstraint.activateConstraints([centerXConstraint, centerYConstraint, widthConstraint, heightConstraint])
         view.layoutIfNeeded()
     }
-    
+    // MARK: - 展现发送新微博的选择视图
     func sendNewPost(sender: UIButton) {
-        UIView.animateWithDuration(0.5) {
-            self.newPostView?.closeBtn.transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
-            self.newPostView?.alpha = 1
-        }
         newPostView?.isReprensing = true
+    }
+    // MARK: - 模态展示新文字微博VC
+    func newTextPost() {
+        performSegueWithIdentifier("NewTextPostSegue", sender: nil)
     }
 
 }

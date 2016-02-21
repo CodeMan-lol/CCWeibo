@@ -48,6 +48,8 @@
 		C9B3E1AC1C60EFB60006D44B /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E1AB1C60EFB60006D44B /* ProfileTableViewController.swift */; };
 		C9B3E1AF1C618C970006D44B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1AD1C618C970006D44B /* Home.storyboard */; };
 		C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1B21C618CDB0006D44B /* Message.storyboard */; };
+		C9C925F51C795F8C0011AECF /* NewTextPost.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9C925F41C795F8C0011AECF /* NewTextPost.storyboard */; };
+		C9C925F71C7960F80011AECF /* NewTextPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C925F61C7960F80011AECF /* NewTextPostViewController.swift */; };
 		C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */; };
 		C9CA60221C670DD000A9F999 /* String+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CA60211C670DD000A9F999 /* String+FilePath.swift */; };
 		C9E11DB11C73021100F6DA41 /* MagicMoveTransion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */; };
@@ -133,6 +135,8 @@
 		C9B3E1AB1C60EFB60006D44B /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		C9B3E1AE1C618C970006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		C9B3E1B31C618CDB0006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Message.storyboard; sourceTree = "<group>"; };
+		C9C925F41C795F8C0011AECF /* NewTextPost.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewTextPost.storyboard; sourceTree = "<group>"; };
+		C9C925F61C7960F80011AECF /* NewTextPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTextPostViewController.swift; sourceTree = "<group>"; };
 		C9CA601F1C66E7FB00A9F999 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		C9CA60211C670DD000A9F999 /* String+FilePath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+FilePath.swift"; sourceTree = "<group>"; };
 		C9E11DAF1C73021100F6DA41 /* MagicMoveTransion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicMoveTransion.swift; sourceTree = "<group>"; };
@@ -214,8 +218,10 @@
 		C93CB9281C75E94200CF7EDC /* NewPost */ = {
 			isa = PBXGroup;
 			children = (
+				C9C925F41C795F8C0011AECF /* NewTextPost.storyboard */,
 				C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */,
 				C93CB92B1C75EF8100CF7EDC /* NewPostTabView.swift */,
+				C9C925F61C7960F80011AECF /* NewTextPostViewController.swift */,
 			);
 			path = NewPost;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 				C9E3B6E91C6A2E4500D1E98A /* Profile.storyboard in Resources */,
 				C9099C011C61C70400E7A630 /* VisitorView.xib in Resources */,
 				C9F9C7621C661744001E43D1 /* OAuth.storyboard in Resources */,
+				C9C925F51C795F8C0011AECF /* NewTextPost.storyboard in Resources */,
 				C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */,
 				C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */,
 				C9B3E1AF1C618C970006D44B /* Home.storyboard in Resources */,
@@ -721,6 +728,7 @@
 				C9CA60201C66E7FB00A9F999 /* UserAccount.swift in Sources */,
 				C9E3B6EE1C6B2B4400D1E98A /* Status.swift in Sources */,
 				C998F6BC1C6EE14F00B900F7 /* RetweetTimeLineCell.swift in Sources */,
+				C9C925F71C7960F80011AECF /* NewTextPostViewController.swift in Sources */,
 				C9F9C75E1C66169B001E43D1 /* OAuthViewController.swift in Sources */,
 				C98F4EC51C6990370024A931 /* WelcomeViewController.swift in Sources */,
 				C9B3E1A41C60E1B10006D44B /* MainTabBarController.swift in Sources */,
