@@ -17,7 +17,7 @@ class MainTabBarController: UITabBarController {
         newPostView = NewPostTabView(frame: view.bounds)
         newPostView!.alpha = 0
         view.addSubview(newPostView!)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newTextPost", name: NewPostNotifications.NewPostTextItemDidClick, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTabBarController.newTextPost), name: NewPostNotifications.NewPostTextItemDidClick, object: nil)
     }
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -40,7 +40,7 @@ class MainTabBarController: UITabBarController {
         // 背景图
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), forState: .Normal)
         btn.setBackgroundImage(UIImage(named: "tabbar_compose_button_highlighted"), forState: .Highlighted)
-        btn.addTarget(self, action: "sendNewPost:", forControlEvents: .TouchUpInside)
+        btn.addTarget(self, action: #selector(MainTabBarController.sendNewPost(_:)), forControlEvents: .TouchUpInside)
         return btn
         
     }()

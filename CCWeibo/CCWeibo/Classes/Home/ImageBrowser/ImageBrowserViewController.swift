@@ -35,7 +35,7 @@ class ImageBrowserViewController: UIViewController {
     }
     @IBAction func save(sender: UIButton) {
         let cell = imageCollectionView.visibleCells().last as! ImageBrowserCell
-        UIImageWriteToSavedPhotosAlbum(cell.imageView.image!, self, "image:didFinishSavingWithError:contextInfo:", nil)
+        UIImageWriteToSavedPhotosAlbum(cell.imageView.image!, self, #selector(ImageBrowserViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
     }
     func image(image:UIImage, didFinishSavingWithError error:NSError?, contextInfo: AnyObject) {
         guard error == nil else {
@@ -66,7 +66,7 @@ class ImageBrowserViewController: UIViewController {
         super.viewDidLoad()
         let layout = imageCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = view.bounds.size
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "close", name: ImageBrowserNotifications.TapToClose, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ImageBrowserViewController.close), name: ImageBrowserNotifications.TapToClose, object: nil)
     }
     deinit {
         // 清理内存里的gif缓存

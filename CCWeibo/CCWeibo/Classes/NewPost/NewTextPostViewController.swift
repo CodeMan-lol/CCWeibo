@@ -13,9 +13,10 @@ import MBProgressHUD
 
 class NewTextPostViewController: UIViewController {
 
+    // MARK: - 发送新微博
     @IBAction func postNewWeibo(sender: UIBarButtonItem) {
         Alamofire.request(WBRouter.PostNewTextWeibo(accessToken: UserAccount.loadAccount()!.accessToken, status: textView.text)).responseJSON { response in
-            guard response.result.error == nil, let data = response.result.value else {
+            guard response.result.error == nil else {
                 let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 hud.labelText = "发送出错! 请重试"
                 hud.color = UIColor.whiteColor()
@@ -49,7 +50,8 @@ class NewTextPostViewController: UIViewController {
     @IBOutlet weak var placeholderLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addChildViewController(emoticonsKB)
+        textView.inputView = emoticonsKB.view
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
@@ -60,6 +62,7 @@ class NewTextPostViewController: UIViewController {
         super.viewWillDisappear(animated)
         textView.resignFirstResponder()
     }
+    private lazy var emoticonsKB: EmoticonsKBViewController = EmoticonsKBViewController()
 
 
 }

@@ -45,7 +45,7 @@ class ImageBrowserCell: UICollectionViewCell {
         imageScrollView.delegate = self
         imageScrollView.maximumZoomScale = 2
         imageScrollView.minimumZoomScale = 1
-        let tap = UITapGestureRecognizer(target: self, action: "close")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ImageBrowserCell.close))
         imageScrollView.addGestureRecognizer(tap)
         }
     }

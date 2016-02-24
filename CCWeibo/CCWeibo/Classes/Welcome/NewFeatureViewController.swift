@@ -58,7 +58,7 @@ class NewFeatureViewController: UICollectionViewController {
         let btn = UIButton()
         btn.setBackgroundImage(UIImage(named: "new_feature_button"), forState: .Normal)
         btn.setBackgroundImage(UIImage(named: "new_feature_button_highlighted"), forState: .Highlighted)
-        btn.addTarget(self, action: "startBtnClick", forControlEvents: .TouchUpInside)
+        btn.addTarget(self, action: #selector(NewFeatureViewController.startBtnClick), forControlEvents: .TouchUpInside)
         btn.hidden = true
         return btn
     }()

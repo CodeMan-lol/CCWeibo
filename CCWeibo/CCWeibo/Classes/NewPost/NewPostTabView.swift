@@ -162,7 +162,7 @@ class ScrollTabView: UIView {
     private func setupUI() {
         self.addSubview(imageView)
         self.addSubview(infoLabel)
-        let tap = UITapGestureRecognizer(target: self, action: "didClick")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ScrollTabView.didClick))
         self.addGestureRecognizer(tap)
         imageView.snp_makeConstraints { (make) in
             make.top.equalTo(self.snp_top).offset(10)

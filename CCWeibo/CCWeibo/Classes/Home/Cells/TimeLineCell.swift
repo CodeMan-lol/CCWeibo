@@ -30,14 +30,11 @@ class TimeLineCell: UITableViewCell {
     @IBOutlet weak var picListHeightCons: NSLayoutConstraint!
     @IBOutlet weak var picListBottomCons: NSLayoutConstraint!
     
-    private var retrieveImageTasks: [RetrieveImageTask] = []
-    
     func cancelRetrieveTasks() {
-        for task in retrieveImageTasks {
-            task.cancel()
+//        KingfisherManager.sharedManager.cache.clearMemoryCache()
+        for cell in picturesCollectionView.visibleCells() as! [PictureCollectionViewCell] {
+            cell.imageURL = nil
         }
-        retrieveImageTasks.removeAll()
-        KingfisherManager.sharedManager.cache.clearDiskCache()
     }
     
     // 图片列表中图片之间的间隙
@@ -168,8 +165,7 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
         } else {
             cell.gifLabel.hidden = true
         }
-        let task = cell.setImage(imageURL)
-        retrieveImageTasks.append(task)
+        cell.imageURL = imageURL
         return cell
     }
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -194,6 +190,17 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
 
 // MARK: - 图片集合单元格
 class PictureCollectionViewCell: UICollectionViewCell {
+    var imageURL: NSURL? {
+        didSet {
+            guard imageURL != nil else {
+                imageView.kf_cancelDownloadTask()
+                KingfisherManager.sharedManager.cache.removeImageForKey(oldValue!.absoluteString)
+                return
+            }
+            imageView.kf_showIndicatorWhenLoading = true
+            imageView.kf_setImageWithURL(imageURL!)
+        }
+    }
     private var gifLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = UIColor.orangeColor()
@@ -212,10 +219,6 @@ class PictureCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func setImage(imageURL: NSURL) -> RetrieveImageTask {
-        imageView.kf_showIndicatorWhenLoading = true
-        return imageView.kf_setImageWithURL(imageURL)
-    }
 }
 
 

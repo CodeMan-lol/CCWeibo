@@ -17,7 +17,7 @@ class HomeTableViewController: BaseTableViewController {
     var selectedImageCollection: UICollectionView?
     
     @IBAction func leftBarItemClick(sender: UIButton) {
-        print(__FUNCTION__)
+        print(#function)
     }
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
 //  行高缓存，如用手动行高需要开启下一行代码
@@ -47,14 +47,14 @@ class HomeTableViewController: BaseTableViewController {
 //          自动行高，如用手动行高，注释掉下一行代码
             tableView.rowHeight = UITableViewAutomaticDimension
             refreshControl = HomeRefreshControl(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 60))
-            refreshControl?.addTarget(self, action: "refreshTimeLine", forControlEvents: .ValueChanged)
+            refreshControl?.addTarget(self, action: #selector(HomeTableViewController.refreshTimeLine), forControlEvents: .ValueChanged)
             
             self.navigationController?.navigationBar.insertSubview(self.newStatuesCountLabel, atIndex: 0)
             self.newStatuesCountLabel.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 30)
 
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillHide, object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "changeTitleArrow", name: HomeNotifications.TitleViewWillShow, object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "didClickImage:", name: HomeNotifications.DidSelectCollectionImage, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeTableViewController.changeTitleArrow), name: HomeNotifications.TitleViewWillHide, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeTableViewController.changeTitleArrow), name: HomeNotifications.TitleViewWillShow, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeTableViewController.didClickImage(_:)), name: HomeNotifications.DidSelectCollectionImage, object: nil)
             refreshControl?.beginRefreshing()
             refreshTimeLine()
         }
@@ -63,6 +63,7 @@ class HomeTableViewController: BaseTableViewController {
     func refreshTimeLine() {
         let sinceId = statuses.first?.id
         Status.loadStatuses(sinceId, maxId: nil) {
+            [unowned self]
             statuses in
             self.refreshControl?.endRefreshing()
             if statuses.count > 0 {
@@ -79,6 +80,7 @@ class HomeTableViewController: BaseTableViewController {
         let maxId = statuses.last!.id - 1
         activityIndicatorView.startAnimating()
         Status.loadStatuses(nil, maxId: maxId) {
+            [unowned self]
             statuses in
             if statuses.count > 0 {
                 self.statuses.insertContentsOf(statuses, at: self.statuses.count)
@@ -125,7 +127,7 @@ class HomeTableViewController: BaseTableViewController {
         titleBtn.setTitle("\(UserInfo.loadUserInfo()!.screenName) ", forState: .Normal)
         titleBtn.setImage(UIImage(named: "navigationbar_arrow_down"), forState: .Normal)
         titleBtn.setImage(UIImage(named: "navigationbar_arrow_up"), forState: .Selected)
-        titleBtn.addTarget(self, action: "titleBtnClick:", forControlEvents: .TouchUpInside)
+        titleBtn.addTarget(self, action: #selector(HomeTableViewController.titleBtnClick(_:)), forControlEvents: .TouchUpInside)
         titleBtn.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
         navigationItem.titleView = titleBtn
         titleBtn.sizeToFit()

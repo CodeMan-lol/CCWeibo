@@ -27,7 +27,7 @@ class PopoverPresentationController: UIPresentationController {
         view.frame = UIScreen.mainScreen().bounds
         
         // 2.添加监听
-        let tap = UITapGestureRecognizer(target: self, action: "close")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PopoverPresentationController.close))
         view.addGestureRecognizer(tap)
         return view
     }()

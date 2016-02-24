@@ -30,7 +30,8 @@ class MagicMovePopTransion: NSObject, UIViewControllerAnimatedTransitioning {
         toVC.selectedImageCell = toCell
         toVC.selectedImageCell!.imageView.hidden = true
         // 利用新建imageview来进行遮罩
-        let snapshotView = UIImageView(image: toVC.selectedImageCell?.imageView.image)
+        let snapshotImage = toVC.selectedImageCell!.imageView.image
+        let snapshotView = UIImageView(image: snapshotImage)
         snapshotView.contentMode = .ScaleAspectFill
         snapshotView.clipsToBounds = true
         snapshotView.frame = container!.convertRect(fromImageView.frame, fromView: fromImageView.superview!)

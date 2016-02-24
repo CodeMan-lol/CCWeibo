@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MagicMoveTransion: NSObject, UIViewControllerAnimatedTransitioning {
     func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
@@ -19,7 +20,9 @@ class MagicMoveTransion: NSObject, UIViewControllerAnimatedTransitioning {
         let toVC = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! ImageBrowserViewController
         let container = transitionContext.containerView()
         
-        let snapshotView = UIImageView(image: fromVC.selectedImageCell?.imageView.image)
+        let snapshotImage = fromVC.selectedImageCell!.imageView.image
+//        let snapshotImage = KingfisherManager.sharedManager.cache.retrieveImageInMemoryCacheForKey(fromVC.selectedImageCell!.)
+        let snapshotView = UIImageView(image: snapshotImage)
         snapshotView.contentMode = .ScaleAspectFill
         snapshotView.clipsToBounds = true
         snapshotView.frame = container!.convertRect(fromVC.selectedImageCell!.imageView.frame, fromView: fromVC.selectedImageCell!)
