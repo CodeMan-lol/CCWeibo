@@ -93,6 +93,7 @@ class Status: NSObject {
                 statuses.append(status)
             }
             completion(statuses: statuses)
+            
         }
     }
 

@@ -31,7 +31,6 @@ class TimeLineCell: UITableViewCell {
     @IBOutlet weak var picListBottomCons: NSLayoutConstraint!
     
     func cancelRetrieveTasks() {
-//        KingfisherManager.sharedManager.cache.clearMemoryCache()
         for cell in picturesCollectionView.visibleCells() as! [PictureCollectionViewCell] {
             cell.imageURL = nil
         }
@@ -194,7 +193,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
         didSet {
             guard imageURL != nil else {
                 imageView.kf_cancelDownloadTask()
-                KingfisherManager.sharedManager.cache.removeImageForKey(oldValue!.absoluteString)
+                KingfisherManager.sharedManager.cache.removeImageForKey(oldValue!.absoluteString, fromDisk: false, completionHandler: nil)
                 return
             }
             imageView.kf_showIndicatorWhenLoading = true
@@ -216,6 +215,8 @@ class PictureCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView! {
         didSet {
         imageView.addSubview(gifLabel)
+        imageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+        imageView.layer.borderWidth = 0.5
         }
     }
     

@@ -66,14 +66,43 @@ class NewTextPostViewController: UIViewController {
             placeholderLabel.topAnchor.constraintEqualToAnchor(textView.topAnchor, constant: 8)
         ]
         NSLayoutConstraint.activateConstraints(cons)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NewTextPostViewController.keyboardFrameChanged(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
     }
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    @IBOutlet weak var toolBarBottomCons: NSLayoutConstraint!
+    func keyboardFrameChanged(notification: NSNotification) {
+        let duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey] as! Double
+        let endFrame = (notification.userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        toolBarBottomCons.constant = view.bounds.height - endFrame.minY
+        // 防止工具条跳跃抖动
+        let curve = notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! Int
+        UIView.animateWithDuration(duration) {
+            UIView.setAnimationCurve(UIViewAnimationCurve(rawValue: curve)!)
+            self.view.layoutIfNeeded()
+        }
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         textView.becomeFirstResponder()
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         textView.resignFirstResponder()
+    }
+    @IBAction func toggleKeyboard(sender: UIButton) {
+        textView.resignFirstResponder()
+        if textView.inputView == nil {
+            textView.inputView = emoticonsKB.view
+            sender.setImage(UIImage(named: "compose_keyboardbutton_background"), forState: .Normal)
+            sender.setImage(UIImage(named: "compose_keyboardbutton_background_highlighted"), forState: .Highlighted)
+        } else {
+            textView.inputView = nil
+            sender.setImage(UIImage(named: "compose_emoticonbutton_background"), forState: .Normal)
+            sender.setImage(UIImage(named: "compose_emoticonbutton_background_highlighted"), forState: .Highlighted)
+        }
+        textView.becomeFirstResponder()
     }
     private lazy var emoticonsKB: EmoticonsKBViewController = EmoticonsKBViewController {
         [unowned self]
