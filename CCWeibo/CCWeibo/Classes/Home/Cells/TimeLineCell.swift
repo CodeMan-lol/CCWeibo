@@ -157,9 +157,8 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PictureCollectionViewCell", forIndexPath: indexPath) as! PictureCollectionViewCell
-        var imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
+        let imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
         if imageURL.absoluteString.hasSuffix(".gif") {
-            imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityLow][indexPath.row]
             cell.gifLabel.hidden = false
         } else {
             cell.gifLabel.hidden = true
@@ -194,10 +193,23 @@ class PictureCollectionViewCell: UICollectionViewCell {
             guard imageURL != nil else {
                 imageView.kf_cancelDownloadTask()
                 KingfisherManager.sharedManager.cache.removeImageForKey(oldValue!.absoluteString, fromDisk: false, completionHandler: nil)
+                imageView.image = nil
                 return
             }
             imageView.kf_showIndicatorWhenLoading = true
-            imageView.kf_setImageWithURL(imageURL!)
+            KingfisherManager.sharedManager.retrieveImageWithURL(imageURL!, optionsInfo: nil, progressBlock: nil) { (image, error, cacheType, imageURL) in
+                let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)
+                let queue = dispatch_get_global_queue(qos, 0)
+                
+                dispatch_async(queue) {
+                    let newImage = image?.size.width > UIScreen.mainScreen().bounds.width ? image?.createImageBy(0.6) : image
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.imageView.image = newImage
+                    }
+                }
+
+            }
+//            imageView.kf_setImageWithURL(imageURL!)
         }
     }
     private var gifLabel: UILabel = {

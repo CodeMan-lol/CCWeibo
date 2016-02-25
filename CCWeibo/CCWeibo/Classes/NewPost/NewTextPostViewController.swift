@@ -114,6 +114,7 @@ class NewTextPostViewController: UIViewController {
         }
         if let png = emoticonInfo.png {
             self.textView.insertEmoticon(emoticonInfo)
+            
             return
         }
         if let isDeleteBtn = emoticonInfo.isDeleteBtn where isDeleteBtn {

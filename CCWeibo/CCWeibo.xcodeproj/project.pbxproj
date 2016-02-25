@@ -37,6 +37,7 @@
 		C998F6C51C717C2700B900F7 /* ImageBrowserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C998F6C41C717C2700B900F7 /* ImageBrowserCell.swift */; };
 		C9B0DB511C7DE47C006EB967 /* EmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0DB501C7DE47C006EB967 /* EmoticonAttachment.swift */; };
 		C9B0DB531C7E8DC7006EB967 /* UITextView+Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0DB521C7E8DC7006EB967 /* UITextView+Emoticon.swift */; };
+		C9B0DB551C7F42F1006EB967 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0DB541C7F42F1006EB967 /* UIImage+Scale.swift */; };
 		C9B3E16F1C60D1510006D44B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B3E16E1C60D1510006D44B /* AppDelegate.swift */; };
 		C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1721C60D1510006D44B /* Main.storyboard */; };
 		C9B3E1761C60D1510006D44B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9B3E1751C60D1510006D44B /* Assets.xcassets */; };
@@ -125,6 +126,7 @@
 		C998F6C41C717C2700B900F7 /* ImageBrowserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBrowserCell.swift; sourceTree = "<group>"; };
 		C9B0DB501C7DE47C006EB967 /* EmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonAttachment.swift; sourceTree = "<group>"; };
 		C9B0DB521C7E8DC7006EB967 /* UITextView+Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Emoticon.swift"; sourceTree = "<group>"; };
+		C9B0DB541C7F42F1006EB967 /* UIImage+Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		C9B3E16B1C60D1510006D44B /* CCWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9B3E16E1C60D1510006D44B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9B3E1731C60D1510006D44B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */,
 				C98DA5AC1C6E150000A60886 /* UILabel+Extension.swift */,
 				C98DA5AE1C6E152800A60886 /* UIButton+Extension.swift */,
+				C9B0DB541C7F42F1006EB967 /* UIImage+Scale.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 			files = (
 				C9099C0C1C63652200E7A630 /* PopoverSegue.swift in Sources */,
 				C9B3E1AC1C60EFB60006D44B /* ProfileTableViewController.swift in Sources */,
+				C9B0DB551C7F42F1006EB967 /* UIImage+Scale.swift in Sources */,
 				C9F9C7601C6616BF001E43D1 /* WBKeys.swift in Sources */,
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
 				C9E11DB61C731AF300F6DA41 /* MagicMovePopTransion.swift in Sources */,

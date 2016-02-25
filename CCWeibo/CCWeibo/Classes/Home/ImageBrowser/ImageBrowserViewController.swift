@@ -71,9 +71,7 @@ class ImageBrowserViewController: UIViewController {
     deinit {
         // 清理内存里的gif缓存
         for URL in imageURLs! {
-            if URL.absoluteString.hasSuffix("gif") {
-                KingfisherManager.sharedManager.cache.removeImageForKey(URL.absoluteString, fromDisk: false, completionHandler: nil)
-            }
+            KingfisherManager.sharedManager.cache.removeImageForKey(URL.absoluteString, fromDisk: false, completionHandler: nil)
         }
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }

@@ -21,6 +21,8 @@ extension UITextView {
         self.attributedText = attributedText
         // 移动光标
         self.selectedRange = NSRange(location: range.location+1, length: 0)
+        // 触发输入改变代理方法，不会自动执行
+        delegate?.textViewDidChange?(self)
     }
     
     var weiboText: String {
