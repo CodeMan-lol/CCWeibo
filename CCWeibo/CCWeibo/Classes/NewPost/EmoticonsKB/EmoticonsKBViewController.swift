@@ -102,10 +102,12 @@ private class EmoticonCell: UICollectionViewCell {
         didSet {
             if let code = emoticon!.code {
                 // emoji 表情
-                emoticonBtn.setTitle(code.emojiText(), forState: .Normal)
+                let attributedTitle = NSMutableAttributedString(string: code.emojiText())
+                attributedTitle.addAttributes([NSFontAttributeName: UIFont.systemFontOfSize(32)], range: NSRange(location: 0, length: 2))
+                emoticonBtn.setAttributedTitle(attributedTitle, forState: .Normal)
                 emoticonBtn.setImage(nil, forState: .Normal)
             } else {
-                emoticonBtn.setTitle(nil, forState: .Normal)
+                emoticonBtn.setAttributedTitle(nil, forState: .Normal)
                 if let isDeleteBtn = emoticon!.isDeleteBtn {
                     if isDeleteBtn {
                         // 删除按钮
@@ -114,7 +116,6 @@ private class EmoticonCell: UICollectionViewCell {
                         // 空白格子
                         emoticonBtn.setImage(nil, forState: .Normal)
                     }
-                    
                 } else {
                     // 新浪表情
                     emoticonBtn.setImage("\(emoticon!.id!)/\(emoticon!.png!)".sinaEmoticon(), forState: .Normal)

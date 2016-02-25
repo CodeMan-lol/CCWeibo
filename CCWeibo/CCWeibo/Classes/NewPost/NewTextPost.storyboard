@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10112" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9GX-Ir-7gE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10083"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--新微博-->
@@ -17,27 +16,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WEX-n5-rwo">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WEX-n5-rwo">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="分享新鲜事..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtD-ey-rci">
-                                <rect key="frame" x="12" y="72" width="82.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6TD-xp-dC5">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" id="88D-ej-meU">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fsU-bW-4er">
+                                            <rect key="frame" x="20" y="10" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="compose_toolbar_picture"/>
+                                            <state key="highlighted" image="compose_toolbar_picture_highlighted"/>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="E6O-sR-oCd"/>
+                                    <barButtonItem style="plain" id="v36-Kc-CbX">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="T6h-8C-xGI">
+                                            <rect key="frame" x="151" y="8" width="29" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <state key="normal" image="compose_atbutton_background_highlighted">
+                                                <color key="titleColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <state key="highlighted" image="compose_atbutton_background_highlighted-1">
+                                                <color key="titleColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="qcE-gE-GFt"/>
+                                    <barButtonItem style="plain" id="Ola-Vf-cIx">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VLU-VU-DOy">
+                                            <rect key="frame" x="288" y="10" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="compose_trendbutton_background"/>
+                                            <state key="highlighted" image="compose_trendbutton_background_highlighted"/>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="bHN-TS-ExG"/>
+                                    <barButtonItem style="plain" id="Utt-vb-K9H">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qOS-jf-OyG">
+                                            <rect key="frame" x="419" y="10" width="24" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="compose_emoticonbutton_background"/>
+                                            <state key="highlighted" image="compose_emoticonbutton_background_highlighted"/>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="S4t-Pc-KSY"/>
+                                    <barButtonItem style="plain" id="9IM-9v-v21">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pMm-yp-m1O">
+                                            <rect key="frame" x="550" y="5" width="30" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" image="compose_addbutton_background">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted" image="compose_addbutton_background_highlighted">
+                                                <color key="titleColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CtD-ey-rci" firstAttribute="top" secondItem="XXx-kh-UB9" secondAttribute="bottom" constant="8" id="CCa-63-98B"/>
-                            <constraint firstItem="CtD-ey-rci" firstAttribute="leading" secondItem="CXH-U1-fTN" secondAttribute="leadingMargin" constant="-8" id="OST-9H-x5Y"/>
+                            <constraint firstItem="FEr-gJ-eNU" firstAttribute="top" secondItem="6TD-xp-dC5" secondAttribute="bottom" id="C3X-WA-kWw"/>
+                            <constraint firstItem="6TD-xp-dC5" firstAttribute="width" secondItem="CXH-U1-fTN" secondAttribute="width" id="FG8-Lv-u1k"/>
                             <constraint firstItem="WEX-n5-rwo" firstAttribute="centerX" secondItem="CXH-U1-fTN" secondAttribute="centerX" id="Oo1-Ix-8HF"/>
                             <constraint firstItem="WEX-n5-rwo" firstAttribute="width" secondItem="CXH-U1-fTN" secondAttribute="width" id="U8a-vN-X5r"/>
                             <constraint firstItem="WEX-n5-rwo" firstAttribute="height" secondItem="CXH-U1-fTN" secondAttribute="height" id="YdG-Mj-xdI"/>
                             <constraint firstItem="WEX-n5-rwo" firstAttribute="centerY" secondItem="CXH-U1-fTN" secondAttribute="centerY" id="jek-0v-eTQ"/>
+                            <constraint firstItem="6TD-xp-dC5" firstAttribute="centerX" secondItem="CXH-U1-fTN" secondAttribute="centerX" id="wty-q1-tGc"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="新微博" id="EhJ-R2-wCV">
@@ -53,7 +106,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="placeholderLabel" destination="CtD-ey-rci" id="Anc-aC-3Je"/>
                         <outlet property="postBtn" destination="Ija-o4-Dbw" id="Gon-8a-gFI"/>
                         <outlet property="textView" destination="WEX-n5-rwo" id="fug-SX-b3N"/>
                     </connections>
@@ -81,4 +133,16 @@
             <point key="canvasLocation" x="-924" y="817"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="compose_addbutton_background" width="24" height="24"/>
+        <image name="compose_addbutton_background_highlighted" width="24" height="24"/>
+        <image name="compose_atbutton_background_highlighted" width="23" height="22"/>
+        <image name="compose_atbutton_background_highlighted-1" width="23" height="22"/>
+        <image name="compose_emoticonbutton_background" width="24" height="24"/>
+        <image name="compose_emoticonbutton_background_highlighted" width="24" height="24"/>
+        <image name="compose_toolbar_picture" width="24" height="24"/>
+        <image name="compose_toolbar_picture_highlighted" width="24" height="24"/>
+        <image name="compose_trendbutton_background" width="24" height="24"/>
+        <image name="compose_trendbutton_background_highlighted" width="24" height="24"/>
+    </resources>
 </document>

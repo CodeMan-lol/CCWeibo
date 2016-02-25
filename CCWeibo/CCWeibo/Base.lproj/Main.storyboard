@@ -8,7 +8,7 @@
         <scene sceneID="GP6-nc-Wdk">
             <objects>
                 <tabBarController id="WSQ-9H-O2R" customClass="MainTabBarController" customModule="CCWeibo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" backgroundImage="tabbar_background" id="XEd-hl-VDP">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="XEd-hl-VDP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="0.48630620959999998" blue="0.12465043050000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -195,7 +195,6 @@
     <resources>
         <image name="ad_background" width="320" height="480"/>
         <image name="avatar_default_big" width="85" height="85"/>
-        <image name="tabbar_background" width="1" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="227-8c-GWP"/>

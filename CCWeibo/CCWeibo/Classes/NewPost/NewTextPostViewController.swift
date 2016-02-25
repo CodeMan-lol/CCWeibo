@@ -47,11 +47,25 @@ class NewTextPostViewController: UIViewController {
         textView.delegate = self
         }
     }
-    @IBOutlet weak var placeholderLabel: UILabel!
+    private lazy var placeholderLabel: UILabel = {
+       let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.lightGrayColor()
+        label.text = "分享新鲜事..."
+        label.font = UIFont.systemFontOfSize(14)
+        label.sizeToFit()
+        return label
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         addChildViewController(emoticonsKB)
-        textView.inputView = emoticonsKB.view
+//        textView.inputView = emoticonsKB.view
+        textView.addSubview(placeholderLabel)
+        let cons: [NSLayoutConstraint] = [
+            placeholderLabel.leadingAnchor.constraintEqualToAnchor(textView.leadingAnchor, constant: 8),
+            placeholderLabel.topAnchor.constraintEqualToAnchor(textView.topAnchor, constant: 8)
+        ]
+        NSLayoutConstraint.activateConstraints(cons)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -70,7 +84,7 @@ class NewTextPostViewController: UIViewController {
             return
         }
         if let png = emoticonInfo.png {
-            self.textView.insertEmoticon(emoticonInfo, emoticonSize: 18)
+            self.textView.insertEmoticon(emoticonInfo)
             return
         }
         if let isDeleteBtn = emoticonInfo.isDeleteBtn where isDeleteBtn {
@@ -80,6 +94,12 @@ class NewTextPostViewController: UIViewController {
     }
     
 
+}
+// iOS 9 下textview滚动报 UIWindow endDisablingInterfaceAutorotationAnimated:] called on xxxx ignoring 警告的解决方法
+extension NewTextPostViewController: UIScrollViewDelegate {
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        textView.resignFirstResponder()
+    }
 }
 extension NewTextPostViewController: UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
