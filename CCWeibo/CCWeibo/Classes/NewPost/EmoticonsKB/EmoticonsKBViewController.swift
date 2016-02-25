@@ -9,9 +9,11 @@
 import UIKit
 private let emoticonCellReuseId = "emoticonCellReuseId"
 class EmoticonsKBViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private var emoticonDidSelect: (EmoticonInfo)->()
+    private lazy var emoticonGroups: [EmoticonGroupInfo] = "emoticons.plist".emoticonGroups()
+    init(emoticonDidSelect: (EmoticonInfo)->()) {
+        self.emoticonDidSelect = emoticonDidSelect
+        super.init(nibName: nil, bundle: nil)
         setupUI()
     }
     private func setupUI() {
@@ -47,22 +49,19 @@ class EmoticonsKBViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.pagingEnabled = true
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         return collectionView
     }()
     private lazy var toolBar: UIToolbar = {
         let bar = UIToolbar()
         bar.translatesAutoresizingMaskIntoConstraints = false
-        bar.tintColor = UIColor.darkGrayColor()
         var items = [UIBarButtonItem]()
-        let firstItem = UIBarButtonItem(title: "最近", style: .Plain, target: self, action: #selector(EmoticonsKBViewController.emoticonDidSelected(_:)))
-        firstItem.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14)],forState:.Normal)
-        items.append(firstItem)
-        items.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
-        for group in self.emoticonGroups {
+        for (index, group) in self.emoticonGroups.enumerate() {
             let itemName = group.group_name_cn
-            let barItem = UIBarButtonItem(title: itemName, style: .Plain, target: self, action: #selector(EmoticonsKBViewController.emoticonDidSelected(_:)))
-            barItem.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14)],forState:.Normal)
+            let barItem = UIBarButtonItem(title: itemName, style: .Plain, target: self, action: #selector(EmoticonsKBViewController.emoticonGroupDidSelected(_:)))
+            barItem.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14), NSForegroundColorAttributeName: UIColor.darkGrayColor()],forState:.Normal)
+            barItem.tag = index
             items.append(barItem)
             items.append(UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil))
         }
@@ -70,14 +69,35 @@ class EmoticonsKBViewController: UIViewController {
         bar.items = items
         return bar
     }()
-    func emoticonDidSelected(sender: UIBarButtonItem) {
-        
+    // MARK: - 表情组选中
+    func emoticonGroupDidSelected(sender: UIBarButtonItem) {
+        for item in toolBar.items! {
+            if item === sender {
+                item.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14), NSForegroundColorAttributeName: UIColor.orangeColor()],forState:.Normal)
+            } else {
+                item.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14), NSForegroundColorAttributeName: UIColor.darkGrayColor()],forState:.Normal)
+            }
+        }
+
+        collectionView.scrollToItemAtIndexPath(NSIndexPath(forItem: 0, inSection: sender.tag), atScrollPosition: .Left, animated: false)
     }
-    private lazy var emoticonGroups: [EmoticonGroupInfo] = "emoticons.plist".emoticonGroups()
+    // MARK: - 表情选中添加到最近组
+    private func addEmoticonToLately(emoticon: EmoticonInfo) {
+        guard emoticon.isDeleteBtn == nil else { return }
+        if let index = emoticonGroups[0].emoticons!.indexOf(emoticon) {
+            emoticonGroups[0].emoticons!.removeAtIndex(index)
+            emoticonGroups[0].emoticons!.insert(emoticon, atIndex: 0)
+        } else {
+            emoticonGroups[0].emoticons!.removeAtIndex(emoticonGroups[0].emoticons!.count - 2)
+            emoticonGroups[0].emoticons!.insert(emoticon, atIndex: 0)
+        }
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 private class EmoticonCell: UICollectionViewCell {
     private lazy var emoticonBtn: UIButton = UIButton()
-    var id: String?
     var emoticon: EmoticonInfo? {
         didSet {
             if let code = emoticon!.code {
@@ -97,7 +117,9 @@ private class EmoticonCell: UICollectionViewCell {
                     
                 } else {
                     // 新浪表情
-                    emoticonBtn.setImage("\(id!)/\(emoticon!.png!)".sinaEmoticon(), forState: .Normal)
+                    emoticonBtn.setImage("\(emoticon!.id!)/\(emoticon!.png!)".sinaEmoticon(), forState: .Normal)
+                    emoticonBtn.imageView?.frame.size = CGSize(width: 10, height: 10)
+
                 }
                 
             }
@@ -108,6 +130,9 @@ private class EmoticonCell: UICollectionViewCell {
         setupUI()
     }
     private func setupUI() {
+        
+        emoticonBtn.userInteractionEnabled = false
+
         contentView.addSubview(emoticonBtn)
         emoticonBtn.translatesAutoresizingMaskIntoConstraints = false
         emoticonBtn.backgroundColor = UIColor.groupTableViewBackgroundColor()
@@ -124,7 +149,7 @@ private class EmoticonCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension EmoticonsKBViewController: UICollectionViewDataSource {
+extension EmoticonsKBViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return emoticonGroups.count
     }
@@ -133,8 +158,21 @@ extension EmoticonsKBViewController: UICollectionViewDataSource {
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(emoticonCellReuseId, forIndexPath: indexPath) as! EmoticonCell
-        cell.id = emoticonGroups[indexPath.section].id!
         cell.emoticon = (emoticonGroups[indexPath.section].emoticons!)[indexPath.row]
         return cell
+    }
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        for item in toolBar.items! {
+            if item.tag == indexPath.section {
+                item.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14), NSForegroundColorAttributeName: UIColor.orangeColor()],forState:.Normal)
+            } else {
+                item.setTitleTextAttributes([NSFontAttributeName: UIFont.systemFontOfSize(14), NSForegroundColorAttributeName: UIColor.darkGrayColor()],forState:.Normal)
+            }
+        }
+    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EmoticonCell
+        addEmoticonToLately(cell.emoticon!)
+        emoticonDidSelect(cell.emoticon!)
     }
 }

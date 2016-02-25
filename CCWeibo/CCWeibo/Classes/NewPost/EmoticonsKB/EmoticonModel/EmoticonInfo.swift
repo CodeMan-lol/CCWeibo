@@ -9,6 +9,7 @@
 import UIKit
 
 class EmoticonInfo: NSObject {
+    var id: String?
     var chs: String?
     var cht: String?
     var gif: String?
@@ -21,8 +22,9 @@ class EmoticonInfo: NSObject {
     init(isDeleteBtn: Bool) {
         self.isDeleteBtn = isDeleteBtn
     }
-    init(dict: [String: AnyObject]) {
+    init(dict: [String: AnyObject], id: String) {
         super.init()
+        self.id = id
         setValuesForKeysWithDictionary(dict)
     }
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {

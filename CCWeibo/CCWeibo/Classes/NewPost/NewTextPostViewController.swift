@@ -15,7 +15,7 @@ class NewTextPostViewController: UIViewController {
 
     // MARK: - 发送新微博
     @IBAction func postNewWeibo(sender: UIBarButtonItem) {
-        Alamofire.request(WBRouter.PostNewTextWeibo(accessToken: UserAccount.loadAccount()!.accessToken, status: textView.text)).responseJSON { response in
+        Alamofire.request(WBRouter.PostNewTextWeibo(accessToken: UserAccount.loadAccount()!.accessToken, status: textView.weiboText)).responseJSON { response in
             guard response.result.error == nil else {
                 let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
                 hud.labelText = "发送出错! 请重试"
@@ -52,7 +52,6 @@ class NewTextPostViewController: UIViewController {
         super.viewDidLoad()
         addChildViewController(emoticonsKB)
         textView.inputView = emoticonsKB.view
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,8 +61,24 @@ class NewTextPostViewController: UIViewController {
         super.viewWillDisappear(animated)
         textView.resignFirstResponder()
     }
-    private lazy var emoticonsKB: EmoticonsKBViewController = EmoticonsKBViewController()
-
+    private lazy var emoticonsKB: EmoticonsKBViewController = EmoticonsKBViewController {
+        [unowned self]
+        (emoticonInfo: EmoticonInfo) in
+        if let code = emoticonInfo.code {
+            let range = self.textView.selectedTextRange!
+            self.textView.replaceRange(range, withText: code.emojiText())
+            return
+        }
+        if let png = emoticonInfo.png {
+            self.textView.insertEmoticon(emoticonInfo, emoticonSize: 18)
+            return
+        }
+        if let isDeleteBtn = emoticonInfo.isDeleteBtn where isDeleteBtn {
+            self.textView.deleteBackward()
+            return
+        }
+    }
+    
 
 }
 extension NewTextPostViewController: UITextViewDelegate {

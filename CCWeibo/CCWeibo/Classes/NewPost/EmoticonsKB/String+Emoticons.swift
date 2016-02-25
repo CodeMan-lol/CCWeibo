@@ -29,6 +29,13 @@ extension String {
     func emoticonGroups() -> [EmoticonGroupInfo] {
         let groupIdArr = self.emoticonsGroupIdList()
         var groups = [EmoticonGroupInfo]()
+        // 最近组
+        let latelyGroup = EmoticonGroupInfo()
+        latelyGroup.group_name_cn = "最近"
+        latelyGroup.emoticons = [EmoticonInfo]()
+        latelyGroup.addEmptyEmoticons()
+        groups.append(latelyGroup)
+        // 表情组
         for id in groupIdArr {
             let emoticonInfoPath = (emoticonsBundlePath.stringByAppendingPathComponent(id) as NSString).stringByAppendingPathComponent("info.plist")
             let dict = NSDictionary(contentsOfFile: emoticonInfoPath) as! [String: AnyObject]
