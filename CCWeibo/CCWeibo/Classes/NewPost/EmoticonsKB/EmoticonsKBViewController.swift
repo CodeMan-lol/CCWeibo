@@ -35,11 +35,13 @@ class EmoticonsKBViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         let width = collectionView.bounds.width / 7
-        layout.itemSize = CGSize(width: width, height: width)
+        let height = min(collectionView.bounds.width / 7, collectionView.bounds.height / 3)
+        layout.itemSize = CGSize(width: width, height: height)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .Horizontal
-        let inset = (collectionView.bounds.height - width * 3) * 0.5
+        // 乘0.5的话貌似会在4寸机子上计算有误差？
+        let inset = (collectionView.bounds.height - height * 3) * 0.45
         collectionView.contentInset = UIEdgeInsets(top: inset, left: 0, bottom: inset, right: 0)
     }
     private lazy var collectionView: UICollectionView = {
@@ -103,7 +105,8 @@ private class EmoticonCell: UICollectionViewCell {
             if let code = emoticon!.code {
                 // emoji 表情
                 let attributedTitle = NSMutableAttributedString(string: code.emojiText())
-                attributedTitle.addAttributes([NSFontAttributeName: UIFont.systemFontOfSize(32)], range: NSRange(location: 0, length: 2))
+                // 超过ascii范围的字符串swift将采用utf-16进行存储
+                attributedTitle.addAttributes([NSFontAttributeName: UIFont.systemFontOfSize(32)], range: NSRange(location: 0, length: code.emojiText().utf16.count))
                 emoticonBtn.setAttributedTitle(attributedTitle, forState: .Normal)
                 emoticonBtn.setImage(nil, forState: .Normal)
             } else {

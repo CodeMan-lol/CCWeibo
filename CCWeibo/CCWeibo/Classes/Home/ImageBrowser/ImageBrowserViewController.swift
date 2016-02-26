@@ -22,7 +22,6 @@ class ImageBrowserViewController: UIViewController {
     @IBOutlet weak var imageCollectionView: UICollectionView! {
         didSet {
         imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
         }
     }
     @IBOutlet weak var saveBtn: UIButton! {
@@ -69,7 +68,7 @@ class ImageBrowserViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ImageBrowserViewController.close), name: ImageBrowserNotifications.TapToClose, object: nil)
     }
     deinit {
-        // 清理内存里的gif缓存
+        // 清理内存里的缓存
         for URL in imageURLs! {
             KingfisherManager.sharedManager.cache.removeImageForKey(URL.absoluteString, fromDisk: false, completionHandler: nil)
         }
@@ -95,11 +94,6 @@ extension ImageBrowserViewController: UICollectionViewDataSource {
         return cell
     }
     
-}
-extension ImageBrowserViewController: UICollectionViewDelegate {
-//    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
-//        currentIndex = indexPath.row
-//    }
 }
 
 

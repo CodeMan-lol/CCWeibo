@@ -105,7 +105,7 @@ extension QRCodeViewController: UITabBarDelegate {
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if item.title == "二维码" {
             scanLineView.image = UIImage(named: "qrcode_scanline_qrcode")
-            containerHeightCons.constant = 300
+            containerHeightCons.constant = 200
             self.view.layoutIfNeeded()
         } else {
             scanLineView.image = UIImage(named: "qrcode_scanline_barcode")
