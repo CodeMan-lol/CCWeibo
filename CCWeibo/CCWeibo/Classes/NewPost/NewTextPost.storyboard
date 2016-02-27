@@ -31,6 +31,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="compose_toolbar_picture"/>
                                             <state key="highlighted" image="compose_toolbar_picture_highlighted"/>
+                                            <connections>
+                                                <segue destination="NgV-xa-xhk" kind="presentation" identifier="NewPostModalToImagePicker" id="7mY-pb-bV1"/>
+                                            </connections>
                                         </button>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="E6O-sR-oCd"/>
@@ -117,6 +120,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JBV-9P-rO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-112" y="817"/>
+        </scene>
+        <!--CCImagePicker-->
+        <scene sceneID="DNz-oT-aRm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CCImagePicker" id="NgV-xa-xhk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQg-wZ-Vyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-111.5" y="1234"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="UhE-FA-anA">

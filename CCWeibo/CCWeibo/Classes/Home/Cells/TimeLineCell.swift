@@ -157,9 +157,10 @@ extension TimeLineCell: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PictureCollectionViewCell", forIndexPath: indexPath) as! PictureCollectionViewCell
-        let imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
+        var imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityMedium][indexPath.row]
         if imageURL.absoluteString.hasSuffix(".gif") {
             cell.gifLabel.hidden = false
+            imageURL = self.status!.thumbnailURLs![ApplicationInfo.PictureQualityLow][indexPath.row]
         } else {
             cell.gifLabel.hidden = true
         }
@@ -202,7 +203,7 @@ class PictureCollectionViewCell: UICollectionViewCell {
                 let queue = dispatch_get_global_queue(qos, 0)
                 
                 dispatch_async(queue) {
-                    let newImage = image?.size.width > UIScreen.mainScreen().bounds.width ? image?.createImageBy(0.6) : image
+                    let newImage = image?.size.width > UIScreen.mainScreen().bounds.width ? image?.createImageBy(0.5) : image
                     dispatch_async(dispatch_get_main_queue()) {
                         self.imageView.image = newImage
                     }

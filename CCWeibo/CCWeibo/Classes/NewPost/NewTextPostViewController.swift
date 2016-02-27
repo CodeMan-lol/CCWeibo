@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import MBProgressHUD
-
+import Photos
 class NewTextPostViewController: UIViewController {
 
     // MARK: - 发送新微博
@@ -42,6 +42,8 @@ class NewTextPostViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     @IBOutlet weak var postBtn: UIBarButtonItem!
+    // 分享图片的数组
+    private var assets: [PHAsset] = []
     @IBOutlet weak var textView: UITextView! {
         didSet {
         textView.delegate = self
@@ -59,7 +61,6 @@ class NewTextPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addChildViewController(emoticonsKB)
-//        textView.inputView = emoticonsKB.view
         textView.addSubview(placeholderLabel)
         let cons: [NSLayoutConstraint] = [
             placeholderLabel.leadingAnchor.constraintEqualToAnchor(textView.leadingAnchor, constant: 8),
@@ -123,9 +124,17 @@ class NewTextPostViewController: UIViewController {
         }
     }
     
+    // MARK: - 转场相关
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "NewPostModalToImagePicker" {
+            let imagePickerVC = (((segue.destinationViewController) as! UINavigationController).visibleViewController) as! CCImagePickerViewController
+            imagePickerVC.delegate = self
+            imagePickerVC.selectedAssets = assets
+        }
+    }
 
 }
-// iOS 9 下textview滚动报 UIWindow endDisablingInterfaceAutorotationAnimated:] called on xxxx ignoring 警告的解决方法
+// iOS 9下 textview 滚动报 UIWindow endDisablingInterfaceAutorotationAnimated:] called on xxxx ignoring 警告的解决方法
 extension NewTextPostViewController: UIScrollViewDelegate {
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         textView.resignFirstResponder()
@@ -135,5 +144,11 @@ extension NewTextPostViewController: UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         postBtn.enabled = textView.text != ""
         placeholderLabel.hidden = textView.text != ""
+    }
+}
+// MARK: - ImagePicker Delegate
+extension NewTextPostViewController: CCImagePickerDelegate {
+    func selectedImages(assets: [PHAsset]) {
+        self.assets = assets
     }
 }

@@ -18,6 +18,10 @@
 		C9099C0C1C63652200E7A630 /* PopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0B1C63652200E7A630 /* PopoverSegue.swift */; };
 		C9099C0E1C6365C600E7A630 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */; };
 		C92047C11C6C2990005E5AA5 /* NSDate+WeiboDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */; };
+		C92624171C815BF2008D567C /* CCImagePicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C92624131C815BF2008D567C /* CCImagePicker.storyboard */; };
+		C926241D1C818585008D567C /* CCImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926241A1C818585008D567C /* CCImagePickerViewController.swift */; };
+		C926241E1C818585008D567C /* GroupListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926241B1C818585008D567C /* GroupListTableViewController.swift */; };
+		C926241F1C818585008D567C /* GroupListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926241C1C818585008D567C /* GroupListCell.swift */; };
 		C93CB92A1C75E95600CF7EDC /* NewPostTabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */; };
 		C93CB92C1C75EF8100CF7EDC /* NewPostTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93CB92B1C75EF8100CF7EDC /* NewPostTabView.swift */; };
 		C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */; };
@@ -107,6 +111,10 @@
 		C9099C0B1C63652200E7A630 /* PopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverSegue.swift; sourceTree = "<group>"; };
 		C9099C0D1C6365C600E7A630 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
 		C92047C01C6C2990005E5AA5 /* NSDate+WeiboDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+WeiboDate.swift"; sourceTree = "<group>"; };
+		C92624131C815BF2008D567C /* CCImagePicker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CCImagePicker.storyboard; sourceTree = "<group>"; };
+		C926241A1C818585008D567C /* CCImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCImagePickerViewController.swift; sourceTree = "<group>"; };
+		C926241B1C818585008D567C /* GroupListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListTableViewController.swift; sourceTree = "<group>"; };
+		C926241C1C818585008D567C /* GroupListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupListCell.swift; sourceTree = "<group>"; };
 		C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPostTabView.xib; sourceTree = "<group>"; };
 		C93CB92B1C75EF8100CF7EDC /* NewPostTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostTabView.swift; sourceTree = "<group>"; };
 		C948B9FC1C663A9B004FD9F6 /* WBRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WBRouter.swift; sourceTree = "<group>"; };
@@ -231,9 +239,21 @@
 			path = Popover;
 			sourceTree = "<group>";
 		};
+		C92624111C815BBF008D567C /* CCImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				C926241A1C818585008D567C /* CCImagePickerViewController.swift */,
+				C926241B1C818585008D567C /* GroupListTableViewController.swift */,
+				C926241C1C818585008D567C /* GroupListCell.swift */,
+				C92624131C815BF2008D567C /* CCImagePicker.storyboard */,
+			);
+			path = CCImagePicker;
+			sourceTree = "<group>";
+		};
 		C93CB9281C75E94200CF7EDC /* NewPost */ = {
 			isa = PBXGroup;
 			children = (
+				C92624111C815BBF008D567C /* CCImagePicker */,
 				C9E76ECD1C7BE33B00CA9CD9 /* EmoticonsKB */,
 				C9C925F41C795F8C0011AECF /* NewTextPost.storyboard */,
 				C93CB9291C75E95600CF7EDC /* NewPostTabView.xib */,
@@ -602,6 +622,7 @@
 				C9099C011C61C70400E7A630 /* VisitorView.xib in Resources */,
 				C9F9C7621C661744001E43D1 /* OAuth.storyboard in Resources */,
 				C9C925F51C795F8C0011AECF /* NewTextPost.storyboard in Resources */,
+				C92624171C815BF2008D567C /* CCImagePicker.storyboard in Resources */,
 				C9B3E1741C60D1510006D44B /* Main.storyboard in Resources */,
 				C9B3E1B41C618CDB0006D44B /* Message.storyboard in Resources */,
 				C9CA824B1C7B573D0013BA64 /* Emoticons.bundle in Resources */,
@@ -760,7 +781,9 @@
 				C9B0DB551C7F42F1006EB967 /* UIImage+Scale.swift in Sources */,
 				C9F9C7601C6616BF001E43D1 /* WBKeys.swift in Sources */,
 				C9B3E1A81C60EF890006D44B /* HomeTableViewController.swift in Sources */,
+				C926241F1C818585008D567C /* GroupListCell.swift in Sources */,
 				C9E11DB61C731AF300F6DA41 /* MagicMovePopTransion.swift in Sources */,
+				C926241D1C818585008D567C /* CCImagePickerViewController.swift in Sources */,
 				C9888F131C6799F50043C276 /* NewFeatureViewController.swift in Sources */,
 				C9E3B6F01C6B38D000D1E98A /* User.swift in Sources */,
 				C998F6C31C7178CB00B900F7 /* ImageBrowserViewController.swift in Sources */,
@@ -779,6 +802,7 @@
 				C998F6BE1C6F174D00B900F7 /* HomeRefreshControl.swift in Sources */,
 				C9F9C75B1C64D311001E43D1 /* QRCodeCardViewController.swift in Sources */,
 				C9D833731C7C4B0A0026471B /* EmoticonInfo.swift in Sources */,
+				C926241E1C818585008D567C /* GroupListTableViewController.swift in Sources */,
 				C948B9FD1C663A9B004FD9F6 /* WBRouter.swift in Sources */,
 				C9D833791C7C85E80026471B /* String+Emoticons.swift in Sources */,
 				C9099BFE1C61C5EE00E7A630 /* BaseTableViewController.swift in Sources */,

@@ -16,9 +16,6 @@ class TitleButton: UIButton {
         titleLabel?.frame.origin.x = 0
         imageView?.frame.origin.x = titleLabel!.bounds.size.width
     }
-    deinit {
-        print("----titleBtn deinit----")
-    }
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
