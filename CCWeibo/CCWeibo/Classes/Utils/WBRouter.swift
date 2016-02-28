@@ -19,6 +19,8 @@ enum WBRouter: URLRequestConvertible {
     case FetchUserInfo(accessToken: String, uid: String)
     /// 2/statuses/update.json: 发布一条文字微博
     case PostNewTextWeibo(accessToken: String, status: String)
+    /// 2/statuses/upload.json: 发布一条图片微博，仅支持一张图片上传
+    case PostNewImgWeibo(accessToken: String, status: String)
     
     
     
@@ -36,6 +38,9 @@ enum WBRouter: URLRequestConvertible {
                 return ("2/users/show.json", ["access_token": accessToken, "uid": uid], "GET")
             case .PostNewTextWeibo(let accessToken, let status):
                 return ("2/statuses/update.json", ["access_token": accessToken, "status": status], "POST")
+            case .PostNewImgWeibo(let accessToken, let status):
+                return ("2/statuses/upload.json", ["access_token": accessToken, "status": status], "POST")
+                
             }
             
         }()

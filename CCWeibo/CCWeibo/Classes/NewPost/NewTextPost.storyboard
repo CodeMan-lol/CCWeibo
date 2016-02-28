@@ -32,7 +32,7 @@
                                             <state key="normal" image="compose_toolbar_picture"/>
                                             <state key="highlighted" image="compose_toolbar_picture_highlighted"/>
                                             <connections>
-                                                <segue destination="NgV-xa-xhk" kind="presentation" identifier="NewPostModalToImagePicker" id="7mY-pb-bV1"/>
+                                                <segue destination="NgV-xa-xhk" kind="presentation" identifier="NewPostModalToImagePicker" id="jXX-hF-eGo"/>
                                             </connections>
                                         </button>
                                     </barButtonItem>

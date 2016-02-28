@@ -61,7 +61,8 @@ class TimeLineCell: UITableViewCell {
         nameLabel.text = status?.user?.name
         timeLabel.text = status?.createTimeFoTimeLabel
         sourceLabel.text = "来自 \(status!.source!)"
-        contentLabel.text = status?.text
+//        contentLabel.text = status?.text
+        contentLabel.attributedText = status?.text?.emoticonAttributedString()
         // 头像设置
         avatarView.kf_setImageWithURL(status!.user!.avatarURL)
         avatarView.layer.borderWidth = 0.5

@@ -58,4 +58,28 @@ extension String {
         let imagePath = emoticonsBundlePath.stringByAppendingPathComponent(self)
         return UIImage(contentsOfFile: imagePath)!
     }
+    
+    // 获取带表情、链接的AtrributedString
+    func emoticonAttributedString() -> NSAttributedString {
+        let finalAttributedString = NSMutableAttributedString(string: self)
+        let pattern = "\\[.*?\\]"
+        let groups = "emoticons.plist".emoticonGroups()
+        let regex = try! NSRegularExpression(pattern: pattern, options: .CaseInsensitive)
+        let results = regex.matchesInString(self, options: [], range: NSRange(location: 0, length: self.characters.count))
+        for result in results.reverse() {
+            let emoticonStr = (self as NSString).substringWithRange(result.range)
+            var emoticon: EmoticonInfo?
+            for group in groups {
+                emoticon = group.emoticons?.lazy.filter {
+                    $0.chs == emoticonStr
+                }.last
+                if emoticon != nil {
+                    break
+                }
+            }
+            let emoticonAttributedString = EmoticonAttachment.createEmoticonAttachmentString(emoticon!, size: 14)
+            finalAttributedString.replaceCharactersInRange(result.range, withAttributedString: emoticonAttributedString)
+        }
+        return finalAttributedString
+    }
 }
