@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AssetsLibrary
 import Photos
 private let PickerCellReuseId = "PickerViewCellReUserId"
 protocol CCImagePickerDelegate: class {
@@ -15,7 +14,6 @@ protocol CCImagePickerDelegate: class {
 }
 
 class CCImagePickerViewController: UIViewController {
-//    private lazy var assetsLib = ALAssetsLibrary()
     weak var delegate: CCImagePickerDelegate?
     // 相簿组
     private var assetCollections = [PHAssetCollection]()
@@ -85,7 +83,7 @@ extension CCImagePickerViewController {
         }
         let allPhotosResult = PHAssetCollection.fetchAssetCollectionsWithType(.SmartAlbum, subtype: .Any, options: nil)
         for i in 0..<allPhotosResult.count {
-            if allPhotosResult[i].localizedTitle! == "All Photos" {
+            if allPhotosResult[i].localizedTitle! == "All Photos" || allPhotosResult[i].localizedTitle! == "Camera Roll" {
                 assetCollections.append(allPhotosResult[i] as! PHAssetCollection)
             }
         }
