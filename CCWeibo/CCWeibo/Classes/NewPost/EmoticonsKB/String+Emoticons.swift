@@ -54,9 +54,9 @@ extension String {
     }
     
     // 通过表情图片路径获取图片
-    func sinaEmoticon() -> UIImage {
+    func sinaEmoticon() -> UIImage? {
         let imagePath = emoticonsBundlePath.stringByAppendingPathComponent(self)
-        return UIImage(contentsOfFile: imagePath)!
+        return UIImage(contentsOfFile: imagePath)
     }
     
     // 获取带表情、链接的AtrributedString
@@ -77,8 +77,11 @@ extension String {
                     break
                 }
             }
-            let emoticonAttributedString = EmoticonAttachment.createEmoticonAttachmentString(emoticon!, size: 14)
-            finalAttributedString.replaceCharactersInRange(result.range, withAttributedString: emoticonAttributedString)
+            if emoticon != nil {
+                if let emoticonAttributedString = EmoticonAttachment.createEmoticonAttachmentString(emoticon!, size: 14) {
+                    finalAttributedString.replaceCharactersInRange(result.range, withAttributedString: emoticonAttributedString)
+                }
+            }
         }
         return finalAttributedString
     }

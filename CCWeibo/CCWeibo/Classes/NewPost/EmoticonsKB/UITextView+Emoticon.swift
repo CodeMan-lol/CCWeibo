@@ -14,7 +14,7 @@ extension UITextView {
         // 创建图文属性文本
         let imageText = EmoticonAttachment.createEmoticonAttachmentString(emoticon, size: font!.lineHeight)
         // 在光标处插入图文属性文本
-        attributedText.replaceCharactersInRange(range, withAttributedString: imageText)
+        attributedText.replaceCharactersInRange(range, withAttributedString: imageText!)
         // 还原输入图文属性文本之前属性文本的大小尺寸
         attributedText.addAttributes([NSFontAttributeName: font!], range: NSRange(location: range.location, length: 1))
         // 替换原有的属性文本

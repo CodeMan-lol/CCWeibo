@@ -18,7 +18,7 @@ class RetweetTimeLineCell: TimeLineCell {
     override func setupUI() {
         super.setupUI()
         let retweetStatus = status?.retweeted_status
-        retweetContentLabel.text = "@\(retweetStatus?.user?.name ?? "未知用户"):\(retweetStatus!.text!)"
+        retweetContentLabel.attributedText = "@\(retweetStatus?.user?.name ?? "未知用户"):\(retweetStatus!.text!)".emoticonAttributedString()
     }
 
 }
