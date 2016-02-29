@@ -8,4 +8,4 @@ username: ccweibotest@126.com
 password: ccweibotest  
 ![image](https://github.com/cache0928/CCWeibo/blob/master/images/2016-02-29%2009_17_57.gif)
 ![image](https://github.com/cache0928/CCWeibo/blob/master/images/2016-02-29%2009_22_47.gif)
-![image](https://github.com/cache0928/CCWeibo/blob/master/images/2016-02-29%2009_26_37.gif)
+![image](https://github.com/cache0928/CCWeibo/blob/master/images/2016-02-29%2009_45_00.gif)
