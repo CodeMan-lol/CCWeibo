@@ -87,7 +87,7 @@ extension CCImagePickerViewController {
                 assetCollections.append(allPhotosResult[i] as! PHAssetCollection)
             }
         }
-        filtePhotoBy(assetCollections.last!)
+        filtePhotoBy(assetCollections.first!)
     }
     private func filtePhotoBy(collection: PHAssetCollection) {
         titleBtn.setTitle(collection.localizedTitle! + " ", forState: .Normal)
